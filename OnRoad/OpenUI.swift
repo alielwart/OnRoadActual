@@ -9,7 +9,17 @@ import SwiftUI
 
 struct OpenUI: View {
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        VStack(alignment: .center) {
+            Text("OnRoad")
+                .font(.largeTitle)
+                .foregroundColor(Color.blue)
+            .padding(.top, 3.0)
+            Text("Naviagtion Assitant")
+                    .font(.title)
+                .foregroundColor(Color(hue: 0.581, saturation: 0.137, brightness: 1.0))
+            NavigationLink("Navigate", destination: Home())
+
+        }
     }
 }
 

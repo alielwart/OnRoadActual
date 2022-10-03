@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		445CF9AD28EB863400E845C8 /* File.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CF9AC28EB863400E845C8 /* File.swift */; };
+		445CF9AF28EB898700E845C8 /* Vibration Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 445CF9AE28EB898700E845C8 /* Vibration Settings.swift */; };
 		44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B628EA1055002A5118 /* OnRoadApp.swift */; };
 		44B725B928EA1055002A5118 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B828EA1055002A5118 /* ContentView.swift */; };
 		44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B725BA28EA1057002A5118 /* Assets.xcassets */; };
@@ -16,8 +18,9 @@
 		44B725D428EA1057002A5118 /* OnRoadUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725D328EA1057002A5118 /* OnRoadUITestsLaunchTests.swift */; };
 		44B7261728EA15B4002A5118 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261628EA15B4002A5118 /* SwiftUIView.swift */; };
 		44B7261928EA176C002A5118 /* mapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261828EA176C002A5118 /* mapView.swift */; };
-		44B7261B28EA2156002A5118 /* OpenPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261A28EA2156002A5118 /* OpenPage.swift */; };
 		44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261C28EA2262002A5118 /* OpenUI.swift */; };
+		44B7261F28EA6712002A5118 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261E28EA6712002A5118 /* Home.swift */; };
+		44B7262128EA6A75002A5118 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7262028EA6A75002A5118 /* Settings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +41,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		445CF9AC28EB863400E845C8 /* File.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = File.swift; sourceTree = "<group>"; };
+		445CF9AE28EB898700E845C8 /* Vibration Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vibration Settings.swift"; sourceTree = "<group>"; };
 		44B725B328EA1055002A5118 /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B725B628EA1055002A5118 /* OnRoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRoadApp.swift; sourceTree = "<group>"; };
 		44B725B828EA1055002A5118 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -50,8 +55,9 @@
 		44B725D328EA1057002A5118 /* OnRoadUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRoadUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		44B7261628EA15B4002A5118 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		44B7261828EA176C002A5118 /* mapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = mapView.swift; sourceTree = "<group>"; };
-		44B7261A28EA2156002A5118 /* OpenPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenPage.swift; sourceTree = "<group>"; };
 		44B7261C28EA2262002A5118 /* OpenUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUI.swift; sourceTree = "<group>"; };
+		44B7261E28EA6712002A5118 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
+		44B7262028EA6A75002A5118 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -104,8 +110,11 @@
 			children = (
 				44B725B628EA1055002A5118 /* OnRoadApp.swift */,
 				44B725B828EA1055002A5118 /* ContentView.swift */,
-				44B7261A28EA2156002A5118 /* OpenPage.swift */,
+				44B7262028EA6A75002A5118 /* Settings.swift */,
+				445CF9AE28EB898700E845C8 /* Vibration Settings.swift */,
+				44B7261E28EA6712002A5118 /* Home.swift */,
 				44B7261C28EA2262002A5118 /* OpenUI.swift */,
+				445CF9AC28EB863400E845C8 /* File.swift */,
 				44B7261628EA15B4002A5118 /* SwiftUIView.swift */,
 				44B7261828EA176C002A5118 /* mapView.swift */,
 				44B725BA28EA1057002A5118 /* Assets.xcassets */,
@@ -271,10 +280,13 @@
 			files = (
 				44B725B928EA1055002A5118 /* ContentView.swift in Sources */,
 				44B7261928EA176C002A5118 /* mapView.swift in Sources */,
+				44B7262128EA6A75002A5118 /* Settings.swift in Sources */,
 				44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */,
 				44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */,
+				445CF9AF28EB898700E845C8 /* Vibration Settings.swift in Sources */,
 				44B7261728EA15B4002A5118 /* SwiftUIView.swift in Sources */,
-				44B7261B28EA2156002A5118 /* OpenPage.swift in Sources */,
+				445CF9AD28EB863400E845C8 /* File.swift in Sources */,
+				44B7261F28EA6712002A5118 /* Home.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -435,6 +447,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnRoad/Preview Content\"";
+				DEVELOPMENT_TEAM = AW9R2XG9PY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -464,6 +477,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnRoad/Preview Content\"";
+				DEVELOPMENT_TEAM = AW9R2XG9PY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
