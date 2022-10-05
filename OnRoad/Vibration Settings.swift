@@ -14,7 +14,7 @@ struct Vibration_Settings: View {
         //TODO: figure out how to remove correct back button
         //TODO: bluetooth connection -> lots to do with this :)
         //TODO: make pretty looking
-            //deals with navLink within navLink 
+        //deals with navLink within navLink 
         VStack{
             Form {
                 Section{

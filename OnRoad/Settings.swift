@@ -24,11 +24,11 @@ struct Settings: View {
                 Section(header: Text("Assecibility")){
                     
                     NavigationLink("Vibration Settings", destination: Vibration_Settings())
+                }
+                .navigationTitle("Settings")
             }
-            .navigationTitle("Settings")
         }
-    }
-    
+        
     }
 }
 

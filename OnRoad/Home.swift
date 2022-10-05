@@ -6,7 +6,6 @@
 //
 import MapKit
 import SwiftUI
-import UIKit
 
 struct Home: View {
     
@@ -46,17 +45,17 @@ struct Home: View {
                 }
             })
             
-            //TODO: move to icon in top corner? 
+            //TODO: move to icon in top corner?
             //settings button
             NavigationLink("Settings", destination: Settings())
                 .padding(5.0)
         }
-
+        
         //hides back buttonsince using navigation link
         .navigationBarBackButtonHidden(true)
         
         
-
+        
     }
     
 }
@@ -110,21 +109,21 @@ struct MapView: UIViewRepresentable {
             for route in unwrappedResponse.routes {
                 mapView.addAnnotation(p1)
                 mapView.addAnnotation(p2)
-                    mapView.addOverlay(route.polyline)
-                    mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                mapView.addOverlay(route.polyline)
+                mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
                 self.directions = route.steps.map{ $0.instructions}.filter { !$0.isEmpty }
-                        }
+            }
             
         }
         
-
+        
         return mapView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
     }
     
-    //create line between locations 
+    //create line between locations
     class MapViewCoordinator: NSObject, MKMapViewDelegate {
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             let renderer = MKPolylineRenderer(overlay: overlay)

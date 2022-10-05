@@ -14,9 +14,9 @@ struct OpenUI: View {
             //TODO: change to OnRoad logo!
             Image("logo")
             Text("Naviagtion Assistant")
-                    .font(.title)
+                .font(.title)
             NavigationLink("Navigate", destination: Home())
-
+            
         }
     }
 }
