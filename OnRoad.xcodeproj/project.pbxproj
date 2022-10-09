@@ -38,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4431B09728F367730060B39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		445CF9AE28EB898700E845C8 /* Vibration Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Vibration Settings.swift"; sourceTree = "<group>"; };
 		44B725B328EA1055002A5118 /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B725B628EA1055002A5118 /* OnRoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRoadApp.swift; sourceTree = "<group>"; };
@@ -102,6 +103,7 @@
 		44B725B528EA1055002A5118 /* OnRoad */ = {
 			isa = PBXGroup;
 			children = (
+				4431B09728F367730060B39B /* Info.plist */,
 				44B725B628EA1055002A5118 /* OnRoadApp.swift */,
 				44B725B828EA1055002A5118 /* ContentView.swift */,
 				44B7262028EA6A75002A5118 /* Settings.swift */,
@@ -438,6 +440,8 @@
 				DEVELOPMENT_TEAM = AW9R2XG9PY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnRoad/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -468,6 +472,8 @@
 				DEVELOPMENT_TEAM = AW9R2XG9PY;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = OnRoad/Info.plist;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
