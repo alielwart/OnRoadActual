@@ -8,11 +8,19 @@
 import SwiftUI
 
 struct OpenUI: View {
+    
+    @Environment(\.colorScheme) var colorScheme
+    
     //TODO: overall make prettier 
     var body: some View {
         VStack(alignment: .center, spacing: 200) {
             //TODO: change to OnRoad logo!
-            Image("logo")
+            if colorScheme == .light {
+                Image("logo")
+            }
+            else {
+                Image("logo-dark")
+            }
 //            Text("Naviagtion Assistant")
 //                    .font(.title)
             VStack(alignment: .center, spacing: 50) {
@@ -52,6 +60,6 @@ struct OpenUI: View {
 
 struct OpenUI_Previews: PreviewProvider {
     static var previews: some View {
-        OpenUI()
+        OpenUI().preferredColorScheme(.dark)
     }
 }

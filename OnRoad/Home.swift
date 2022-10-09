@@ -1,17 +1,12 @@
-//
-//  Home.swift
-//  OnRoad
-//
-//  Created by Ali Elwart on 10/2/22.
-//
 import MapKit
 import SwiftUI
-import UIKit
 
 struct Home: View {
     
     //used to get directions list
     @State private var directions: [String] = []
+    @StateObject private var viewModel = ContentViewModel()
+    
     
     //can't see directions if there aren't any
     @State private var showDirections = false
@@ -20,6 +15,13 @@ struct Home: View {
         VStack{
             VStack {
                 MapView(directions: $directions)
+                
+                Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
+                    .ignoresSafeArea()
+                    .accentColor(Color(.systemPink))
+                    .onAppear{
+                        viewModel.checkIfLocIsOn()
+                    }
                 
                 //show directions button (probably won't be relevent when we get turn by turn)
                 Button(action: {
@@ -46,17 +48,17 @@ struct Home: View {
                 }
             })
             
-            //TODO: move to icon in top corner? 
+            //TODO: move to icon in top corner?
             //settings button
             NavigationLink("Settings", destination: Settings())
                 .padding(5.0)
         }
-
+        
         //hides back buttonsince using navigation link
         .navigationBarBackButtonHidden(true)
         
         
-
+        
     }
     
 }
@@ -83,9 +85,9 @@ struct MapView: UIViewRepresentable {
         
         //defines what is show when open
         //TODO: get user location -> set region to this
-        let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74), span:MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
+        //let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74), span:MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
         
-        mapView.setRegion(region, animated: true)
+        //mapView.setRegion(region, animated: true)
         
         //Ann Arbor for static
         //TODO: change to current location
@@ -110,21 +112,21 @@ struct MapView: UIViewRepresentable {
             for route in unwrappedResponse.routes {
                 mapView.addAnnotation(p1)
                 mapView.addAnnotation(p2)
-                    mapView.addOverlay(route.polyline)
-                    mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                mapView.addOverlay(route.polyline)
+                mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
                 self.directions = route.steps.map{ $0.instructions}.filter { !$0.isEmpty }
-                        }
+            }
             
         }
         
-
+        
         return mapView
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
     }
     
-    //create line between locations 
+    //create line between locations
     class MapViewCoordinator: NSObject, MKMapViewDelegate {
         func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
             let renderer = MKPolylineRenderer(overlay: overlay)
@@ -133,4 +135,49 @@ struct MapView: UIViewRepresentable {
             return renderer
         }
     }
+}
+
+final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
+    
+    var locationManager: CLLocationManager?
+    
+    @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74), span:MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25));
+    
+    
+    func checkIfLocIsOn(){
+        if CLLocationManager.locationServicesEnabled() {
+            locationManager = CLLocationManager()
+            locationManager!.delegate = self
+            locationManager?.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+            
+        } else {
+            print("Location isnt on ")
+        }
+    }
+    
+    private func checkLocationAuth(){
+        guard let locationManager = locationManager else {return}
+        
+        switch locationManager.authorizationStatus {
+            
+            //means needs to ask for permision
+        case .notDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            //when resticted for app
+        case .restricted:
+            print("Your location is restricted")
+            //says no to sharing
+        case .denied:
+            print("You said no :(")
+            //
+        case .authorizedAlways, .authorizedWhenInUse:
+            region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
+        @unknown default:
+            break
+        }
+    }
+        
+    func locationManagerDidChangeAuthorization(_ manager: CLLocationManager){
+            checkLocationAuth()
+        }
 }
