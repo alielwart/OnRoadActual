@@ -6,6 +6,7 @@
 //
 import MapKit
 import SwiftUI
+import UIKit
 
 struct Home: View {
     
@@ -45,12 +46,12 @@ struct Home: View {
                 }
             })
             
-            //TODO: move to icon in top corner?
+            //TODO: move to icon in top corner? 
             //settings button
             NavigationLink("Settings", destination: Settings())
                 .padding(5.0)
         }
-        
+
         //hides back buttonsince using navigation link
         .navigationBarBackButtonHidden(true)
         
