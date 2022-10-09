@@ -10,13 +10,42 @@ import SwiftUI
 struct OpenUI: View {
     //TODO: overall make prettier 
     var body: some View {
-        VStack(alignment: .center) {
+        VStack(alignment: .center, spacing: 200) {
             //TODO: change to OnRoad logo!
             Image("logo")
-            Text("Naviagtion Assistant")
-                    .font(.title)
-            NavigationLink("Navigate", destination: Home())
-
+//            Text("Naviagtion Assistant")
+//                    .font(.title)
+            VStack(alignment: .center, spacing: 50) {
+                NavigationLink(destination: Home()) {
+                    if #available(iOS 15.0, *) { //xcode required this for devices not on ios15
+                        Text("Navigate")
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: 300)
+                            .foregroundColor(.white)
+                            .background(.blue) //don't know what color yet
+                            .cornerRadius(40)
+                            .font(.title)
+                    } else {
+                        // Fallback on earlier versions
+                        Text("Please update your mobile device to IOS15 to use OnRoad")
+                    }
+                }
+                
+                NavigationLink(destination: Settings()) {
+                    if #available(iOS 15.0, *) { //xcode required this for devices not on ios15
+                        Text("Settings")
+                            .padding()
+                            .frame(minWidth: 0, maxWidth: 300)
+                            .foregroundColor(.white)
+                            .background(.blue) //don't know what color yet
+                            .cornerRadius(40)
+                            .font(.title)
+                    } else {
+                        // Fallback on earlier versions
+                        Text("Please update your mobile device to IOS15 to use OnRoad")
+                    }
+                }
+            }
         }
     }
 }
