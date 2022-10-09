@@ -8,25 +8,51 @@
 import SwiftUI
 
 struct Settings: View {
+    
+    // Variables
+    @State private var vIntensity : Float = 5
+    @State private var vIsToggled : Bool = false
+    
+//    TODO: Implement the vIsToggled and vIntensity as variables in a settings class object in the main page
+    
     var body: some View {
         NavigationView {
             
             Form {
-                Section(header: Text("Display")){
+
+                // Main Vibration Toggle
+                Section(header: Text("Vibration")){
                     
-                    //TODO: implement working nightmode
-                    Toggle(isOn: .constant(true), label: {
-                        Text("Night Mode")
+                    //TODO: implement working vibration on off
+                    Toggle(isOn: $vIsToggled, label: {
+                        Text("Vibration")
                     })
                 }
                 
-                //TODO: add sections
-                Section(header: Text("Assecibility")){
+                // More Vibration Settings
+                Section{
+                
+                    // Text
+                    Text("Change Vibration Intensity").foregroundColor(vIsToggled ? .black : .gray)
                     
-                    NavigationLink("Vibration Settings", destination: Vibration_Settings())
-                }
-                .navigationTitle("Settings")
-            }
+                    // Slider
+                    Slider(
+                        value: $vIntensity,
+                        in: 0...10,
+                        step: 1
+                    ).padding(.horizontal, 20.0)
+                        .accentColor(vIsToggled ? .blue : .gray)
+                
+                    // Intensity Level
+                    Text("\(vIntensity, specifier: "%.0F")")
+                        .foregroundColor(vIsToggled ? .blue : .gray)
+
+                    
+                }.disabled(vIsToggled == false)
+
+                
+                
+            }.navigationTitle("Settings")
         }
         
     }
