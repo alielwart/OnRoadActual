@@ -12,11 +12,11 @@ struct ContentView: View {
         NavigationView{
             //shows open page
             OpenUI()
-           
+            
         }
     }
-                
-    }
+    
+}
 
 
 struct ContentView_Previews: PreviewProvider {
