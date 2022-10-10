@@ -1,10 +1,12 @@
 import MapKit
 import SwiftUI
+import CoreLocation
 
 struct Home: View {
     
     //used to get directions list
     @State private var directions: [String] = []
+    @State private var location: String = ""
     @StateObject private var viewModel = ContentViewModel()
     
     
@@ -15,7 +17,16 @@ struct Home: View {
         VStack{
             VStack {
                 MapView(directions: $directions)
-                
+                TextField(
+                    "Enter Destination",
+                    text: $location
+                )
+                .onSubmit{
+                    //this is what I dont get
+                    
+                    //need to figure out how to call this
+                   getCoordinate(addressString: location, completionHandler: <#T##(CLLocationCoordinate2D, NSError?) -> Void#>)
+                }
                 Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
                     .ignoresSafeArea()
                     .accentColor(Color(.systemPink))
@@ -73,6 +84,8 @@ struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     @Binding var directions: [String]
+    
+   
     
     func makeCoordinator() -> MapViewCoordinator {
         return MapViewCoordinator()
@@ -180,4 +193,24 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager){
             checkLocationAuth()
         }
+}
+
+
+//need this to return the location to be able to call in line 110
+// i tried changing the void to MKPlacemark but it didnt let me 
+func getCoordinate( addressString : String,
+        completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
+    let geocoder = CLGeocoder()
+    geocoder.geocodeAddressString(addressString) { (placemarks, error) in
+        if error == nil {
+            if let placemark = placemarks?[0] {
+                let location = placemark.location!
+                    
+                completionHandler(location.coordinate, nil)
+                return
+            }
+        }
+            
+        completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
+    }
 }
