@@ -23,9 +23,9 @@ struct Home: View {
                 )
                 .onSubmit{
                     //this is what I dont get
-                    
+                    printCoords(address: location)
                     //need to figure out how to call this
-                   getCoordinate(addressString: location, completionHandler: <#T##(CLLocationCoordinate2D, NSError?) -> Void#>)
+                    //getCoordinate(addressString: location, completionHandler: <#T##(CLLocationCoordinate2D, NSError?) -> Void#>)
                 }
                 Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
                     .ignoresSafeArea()
@@ -107,7 +107,7 @@ struct MapView: UIViewRepresentable {
         let p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74))
         
         //TODO: get user entry from text entry, will need to find a way to convert location to lat & long
-        let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 41.88, longitude: -87.62))
+        let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude:42.05 , longitude: -84.12))
         
         //just getting requirments for destination calcualtion
         let request = MKDirections.Request()
@@ -152,7 +152,10 @@ struct MapView: UIViewRepresentable {
 
 final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDelegate {
     
+    
     var locationManager: CLLocationManager?
+    var newLat = 42.48
+    var newLong = 42.21
     
     @Published var region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74), span:MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25));
     
@@ -185,6 +188,8 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
             //
         case .authorizedAlways, .authorizedWhenInUse:
             region = MKCoordinateRegion(center: locationManager.location!.coordinate, span: MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
+            newLat = locationManager.location?.coordinate.latitude ?? 41.30
+            newLong = (locationManager.location?.coordinate.longitude) ?? 41.30
         @unknown default:
             break
         }
@@ -198,7 +203,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
 
 //need this to return the location to be able to call in line 110
 // i tried changing the void to MKPlacemark but it didnt let me 
-func getCoordinate( addressString : String,
+/*func getCoordinate( addressString : String,
         completionHandler: @escaping(CLLocationCoordinate2D, NSError?) -> Void ) {
     let geocoder = CLGeocoder()
     geocoder.geocodeAddressString(addressString) { (placemarks, error) in
@@ -213,4 +218,27 @@ func getCoordinate( addressString : String,
             
         completionHandler(kCLLocationCoordinate2DInvalid, error as NSError?)
     }
-}
+}*/
+
+    
+   func printCoords(address : String) {
+        let geocoder = CLGeocoder()
+        
+        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+            if let placemark = placemarks?.first {
+                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+                let lat = coordinates.latitude
+                let long = coordinates.longitude
+                print(lat)
+                print(long)
+            }
+        })
+        //TO DO:
+        //need to find a way to handle null/error values
+        //probably with an if statement
+        //EX:
+        
+        // if ((error) != nil) for error
+        // if placemark == nil --> do something
+    }
+
