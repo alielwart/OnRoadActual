@@ -23,6 +23,7 @@ struct Home: View {
     @State private var showDirections = false
     
     var body: some View {
+        let convew = ContentViewModel()
         VStack{
             VStack{
                 MapView(directions: $directions, loc: $location)
@@ -32,18 +33,12 @@ struct Home: View {
                 )
                 
                 .onSubmit {
-                    convertCoords(address: address) { coordinates in
-                        print(coordinates!)
-                        self.dest_coords = coordinates
-                        //update struct vars
-                        self.latitude = dest_coords!.latitude
-                        self.longitude = dest_coords!.longitude
-                        location = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude))
-                    }
+                        location = printCoords(address: address)
+                        personalloc = convew.checkLocationAuth()
                 }
-                Text("\(latitude)")
-                Text("\(longitude)")
-                personalloc = ContentViewModel.checkLocationAuth()
+          
+                
+                
                 //need to figure out how to call this
                 //getCoordinate(addressString: location, completionHandler: <#T##(CLLocationCoordinate2D, NSError?) -> Void#>)
             }
@@ -114,10 +109,13 @@ struct MapView: UIViewRepresentable {
     }
     
     func makeUIView(context: Context) -> MKMapView {
+        let home = Home(address: "")
+        let contentview = ContentViewModel()
+        
         let mapView = MKMapView()
         mapView.delegate = context.coordinator
         
-        
+        let personalloc = contentview.checkLocationAuth()
         //defines what is show when open
         //TODO: get user location -> set region to this
         //let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74), span:MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
@@ -127,11 +125,12 @@ struct MapView: UIViewRepresentable {
         //Ann Arbor for static
         //TODO: change to current location
         
-        let p1 = Home.personalloc
+        let p1 = personalloc
         
         //TODO: get user entry from text entry, will need to find a way to convert location to lat & long
         
-        let p2 = Home.location
+        let p2 = home.location
+        print(p1,p2)
         
         //just getting requirments for destination calcualtion
         let request = MKDirections.Request()
@@ -247,15 +246,18 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
 }*/
 
     
-func convertCoords(address: String, completion: @escaping (_ location: CLLocationCoordinate2D?) -> Void) {
-        let geocoder = CLGeocoder()
-        geocoder.geocodeAddressString(location) { (placemarks, error) in
-            guard let placemarks = placemarks,
-                  let location = placemarks.first?.location?.coordinate else {
-                completion(nil)
-                return
-            }
-            completion(location)
+func printCoords(address : String) -> MKPlacemark {
+    let geocoder = CLGeocoder()
+    var location = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00))
+    geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
+        if let placemark = placemarks?.first {
+            let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
+            let lat = coordinates.latitude
+            let long = coordinates.longitude
+            print(lat)
+            print(long)
+            location = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: lat, longitude: long))
         }
-    }
+    })
+    return location
 }
