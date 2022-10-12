@@ -14,6 +14,9 @@ struct Settings: View {
     @State private var vFrequency : Float = 50
     @State private var vIsToggled : Bool = false
     
+    @Environment(\.colorScheme) var colorScheme
+
+    
 //    TODO: Implement the vIsToggled and vIntensity as variables in a settings class object in the main page
     
     var body: some View {
@@ -34,7 +37,14 @@ struct Settings: View {
                 Section{
                 
                     // Text: Vibration Intensity
-                    Text("Vibration Intensity").foregroundColor(vIsToggled ? .black : .gray)
+//                    Text("Vibration Intensity").foregroundColor(vIsToggled ? .black : .gray)
+                    
+                    if colorScheme == .light {
+                        Text("Vibration Intensity").foregroundColor(vIsToggled ? .black : .gray)
+                    }
+                    else {
+                        Text("Vibration Intensity").foregroundColor(vIsToggled ? .white : .gray)
+                    }
                     
                     // Slider
                     Slider(
@@ -49,7 +59,13 @@ struct Settings: View {
                         .foregroundColor(vIsToggled ? .blue : .gray)
 
                     // Text: Vibration Frequency
-                    Text("Vibration Frequency").foregroundColor(vIsToggled ? .black : .gray)
+//                    Text("Vibration Frequency").foregroundColor(vIsToggled ? .black : .gray)
+                    if colorScheme == .light {
+                        Text("Vibration Frequency").foregroundColor(vIsToggled ? .black : .gray)
+                    }
+                    else {
+                        Text("Vibration Frequency").foregroundColor(vIsToggled ? .white : .gray)
+                    }
                     
                     // Slider
                     Slider(
