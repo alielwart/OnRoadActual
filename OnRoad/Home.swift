@@ -1,11 +1,18 @@
 import MapKit
 import SwiftUI
+import AudioToolbox
+import AVFoundation
+
 
 struct Home: View {
     
     //used to get directions list
     @State private var directions: [String] = []
     @StateObject private var viewModel = ContentViewModel()
+    @State var count: Int = 0
+    
+    @State var p3: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74)
+    @State var p4: CLLocationCoordinate2D = CLLocationCoordinate2D(latitude: 40.28, longitude: -80.74)
     
     
     //can't see directions if there aren't any
@@ -16,12 +23,12 @@ struct Home: View {
             VStack {
                 MapView(directions: $directions)
                 
-                Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
-                    .ignoresSafeArea()
-                    .accentColor(Color(.systemPink))
-                    .onAppear{
-                        viewModel.checkIfLocIsOn()
-                    }
+                //                Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
+                //                    .ignoresSafeArea()
+                //                    .accentColor(Color(.systemPink))
+                //                    .onAppear{
+                //                        viewModel.checkIfLocIsOn()
+                //                    }
                 
                 //show directions button (probably won't be relevent when we get turn by turn)
                 Button(action: {
@@ -31,7 +38,7 @@ struct Home: View {
                 })
                 .disabled(directions.isEmpty)
                 .padding()
-            } .sheet(isPresented: $showDirections, content: {
+                }.sheet(isPresented: $showDirections, content: {
                 VStack{
                     Text("directions")
                         .font(.largeTitle)
@@ -47,15 +54,52 @@ struct Home: View {
                     }
                 }
             })
+//            VStack {
+//                Button(action: {
+//                    print("opened new map")
+//                }, label: {
+//                    Text("render map")}
+//                )
+//            }.sheet(isPresented: $showDirections, content: {
+//                    VStack{
+//                        MapViewSlider(directions: $directions, p1: MKPlacemark(coordinate: p3), p2: MKPlacemark(coordinate: p4))
+//                    }
+//                })
+            
+            Button(action: {
+//                print(self.count)
+                if self.count < self.directions.count {
+                    print(self.directions[self.count])
+                    if self.directions[self.count].contains("left") {
+                        print("left vibrate")
+                        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
+                        AudioServicesPlayAlertSound(SystemSoundID(1075))
+                    }
+                    else if self.directions[self.count].contains("right") {
+                        print("right vibrate")
+                        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
+                        AudioServicesPlayAlertSound(SystemSoundID(1109))
+                    }
+                    else if self.directions[self.count].contains("Continue") {
+                        print("continue vibrate")
+                        AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
+                        AudioServicesPlayAlertSound(SystemSoundID(1110))
+                    }
+                    self.count = self.count + 1
+                }
+            }, label: {
+                Text("Next Direction")
+            })
             
             //TODO: move to icon in top corner?
             //settings button
             NavigationLink("Settings", destination: Settings())
                 .padding(5.0)
+            
         }
         
         //hides back buttonsince using navigation link
-        .navigationBarBackButtonHidden(true)
+//        .navigationBarBackButtonHidden(true)
         
         
         
@@ -68,7 +112,76 @@ struct Home_Previews: PreviewProvider {
         Home()
     }
 }
-
+struct MapViewSlider: UIViewRepresentable {
+    typealias UIViewType = MKMapView
+    
+    @Binding var directions: [String]
+    
+    @State var p1: MKPlacemark
+    @State var p2: MKPlacemark
+    
+    func makeCoordinator() -> MapViewCoordinator {
+        return MapViewCoordinator()
+    }
+    
+    func makeUIView(context: Context) -> MKMapView {
+        let mapView = MKMapView()
+        mapView.delegate = context.coordinator
+        
+        
+        //defines what is show when open
+        //TODO: get user location -> set region to this
+        //let region = MKCoordinateRegion(center: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74), span:MKCoordinateSpan(latitudeDelta: 0.25, longitudeDelta: 0.25))
+        
+        //mapView.setRegion(region, animated: true)
+        
+        //Ann Arbor for static
+        //TODO: change to current location
+        self.p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74))
+        
+        //TODO: get user entry from text entry, will need to find a way to convert location to lat & long
+        self.p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 41.88, longitude: -87.62))
+        
+        //just getting requirments for destination calcualtion
+        let request = MKDirections.Request()
+        request.source = MKMapItem(placemark: p1)
+        request.destination = MKMapItem(placemark: p2)
+        request.transportType = .automobile
+        
+        let directions = MKDirections(request: request)
+        
+        
+        //if possible to get route gets route, it not returns
+        directions.calculate { response, error in
+            guard let unwrappedResponse  = response else { return }
+            
+            for route in unwrappedResponse.routes {
+                mapView.addAnnotation(p1)
+                mapView.addAnnotation(p2)
+                mapView.addOverlay(route.polyline)
+                mapView.setVisibleMapRect(route.polyline.boundingMapRect, animated: true)
+                self.directions = route.steps.map{ $0.instructions}.filter { !$0.isEmpty }
+            }
+            
+        }
+        
+        
+        return mapView
+    }
+    
+    func updateUIView(_ uiView: UIViewType, context: Context) {
+    }
+    
+    //create line between locations
+    class MapViewCoordinator: NSObject, MKMapViewDelegate {
+        func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+            let renderer = MKPolylineRenderer(overlay: overlay)
+            renderer.strokeColor = .purple
+            renderer.lineWidth = 5
+            return renderer
+        }
+    }
+}
 struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
