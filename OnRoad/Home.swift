@@ -6,8 +6,17 @@ struct Home: View {
     
     //used to get directions list
     @State private var directions: [String] = []
-    @State private var location: String = ""
+    @State public var address: String
+    @State public var location: MKPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00))
     @StateObject private var viewModel = ContentViewModel()
+    
+    //@State private var location: String = "619 East University Ave, Ann Arbor, Michigan 48104"
+    @State private var dest_coords : CLLocationCoordinate2D?
+        //access latitude and longitude here in struct vars
+    @State private var latitude: Double = 0.0
+    @State private var longitude: Double = 0.0
+    
+    @State public var personalloc: MKPlacemark = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00))
     
     
     //can't see directions if there aren't any
@@ -15,34 +24,45 @@ struct Home: View {
     
     var body: some View {
         VStack{
-            VStack {
-                MapView(directions: $directions)
-                TextField(
+            VStack{
+                MapView(directions: $directions, loc: $location)
+                SwiftUI.TextField(
                     "Enter Destination",
-                    text: $location
+                    text: $address
                 )
-                .onSubmit{
-                    //this is what I dont get
-                    printCoords(address: location)
-                    //need to figure out how to call this
-                    //getCoordinate(addressString: location, completionHandler: <#T##(CLLocationCoordinate2D, NSError?) -> Void#>)
-                }
-                Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
-                    .ignoresSafeArea()
-                    .accentColor(Color(.systemPink))
-                    .onAppear{
-                        viewModel.checkIfLocIsOn()
-                    }
                 
-                //show directions button (probably won't be relevent when we get turn by turn)
-                Button(action: {
-                    self.showDirections.toggle()
-                }, label: {
-                    Text("show directions")
-                })
-                .disabled(directions.isEmpty)
-                .padding()
-            } .sheet(isPresented: $showDirections, content: {
+                .onSubmit {
+                    convertCoords(address: address) { coordinates in
+                        print(coordinates!)
+                        self.dest_coords = coordinates
+                        //update struct vars
+                        self.latitude = dest_coords!.latitude
+                        self.longitude = dest_coords!.longitude
+                        location = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: self.latitude, longitude: self.longitude))
+                    }
+                }
+                Text("\(latitude)")
+                Text("\(longitude)")
+                personalloc = ContentViewModel.checkLocationAuth()
+                //need to figure out how to call this
+                //getCoordinate(addressString: location, completionHandler: <#T##(CLLocationCoordinate2D, NSError?) -> Void#>)
+            }
+            Map(coordinateRegion: $viewModel.region, showsUserLocation: true)
+                .ignoresSafeArea()
+                .accentColor(Color(.systemPink))
+                .onAppear{
+                    viewModel.checkIfLocIsOn()
+                }
+            
+            //show directions button (probably won't be relevent when we get turn by turn)
+            Button(action: {
+                self.showDirections.toggle()
+            }, label: {
+                Text("show directions")
+            })
+            .disabled(directions.isEmpty)
+            .padding()
+            .sheet(isPresented: $showDirections, content: {
                 VStack{
                     Text("directions")
                         .font(.largeTitle)
@@ -62,21 +82,21 @@ struct Home: View {
             //TODO: move to icon in top corner?
             //settings button
             NavigationLink("Settings", destination: Settings())
-                .padding(5.0)
+              .padding(5.0)
         }
-        
-        //hides back buttonsince using navigation link
         .navigationBarBackButtonHidden(true)
-        
-        
-        
     }
+        //hides back buttonsince using navigation link
+        
+        
+        
     
 }
 
 struct Home_Previews: PreviewProvider {
     static var previews: some View {
-        Home()
+        //fix this
+        Home(address: "")
     }
 }
 
@@ -84,6 +104,8 @@ struct MapView: UIViewRepresentable {
     typealias UIViewType = MKMapView
     
     @Binding var directions: [String]
+    @Binding var loc: MKPlacemark
+
     
    
     
@@ -104,10 +126,12 @@ struct MapView: UIViewRepresentable {
         
         //Ann Arbor for static
         //TODO: change to current location
-        let p1 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 42.28, longitude: -83.74))
+        
+        let p1 = Home.personalloc
         
         //TODO: get user entry from text entry, will need to find a way to convert location to lat & long
-        let p2 = MKPlacemark(coordinate: CLLocationCoordinate2D(latitude:42.05 , longitude: -84.12))
+        
+        let p2 = Home.location
         
         //just getting requirments for destination calcualtion
         let request = MKDirections.Request()
@@ -137,6 +161,7 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: UIViewType, context: Context) {
+        
     }
     
     //create line between locations
@@ -171,8 +196,8 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         }
     }
     
-    private func checkLocationAuth(){
-        guard let locationManager = locationManager else {return}
+    func checkLocationAuth() -> MKPlacemark {
+        guard let locationManager = locationManager else {return MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: 0.00, longitude: 0.00))}
         
         switch locationManager.authorizationStatus {
             
@@ -193,6 +218,7 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
         @unknown default:
             break
         }
+        return MKPlacemark(coordinate: CLLocationCoordinate2D(latitude: newLat, longitude: newLong))
     }
         
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager){
@@ -221,24 +247,15 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
 }*/
 
     
-   func printCoords(address : String) {
+func convertCoords(address: String, completion: @escaping (_ location: CLLocationCoordinate2D?) -> Void) {
         let geocoder = CLGeocoder()
-        
-        geocoder.geocodeAddressString(address, completionHandler: { (placemarks, error) in
-            if let placemark = placemarks?.first {
-                let coordinates:CLLocationCoordinate2D = placemark.location!.coordinate
-                let lat = coordinates.latitude
-                let long = coordinates.longitude
-                print(lat)
-                print(long)
+        geocoder.geocodeAddressString(location) { (placemarks, error) in
+            guard let placemarks = placemarks,
+                  let location = placemarks.first?.location?.coordinate else {
+                completion(nil)
+                return
             }
-        })
-        //TO DO:
-        //need to find a way to handle null/error values
-        //probably with an if statement
-        //EX:
-        
-        // if ((error) != nil) for error
-        // if placemark == nil --> do something
+            completion(location)
+        }
     }
-
+}

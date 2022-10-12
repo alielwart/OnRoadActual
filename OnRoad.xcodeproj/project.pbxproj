@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		4489A4C128F4C26B00C8E63D /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4489A4C028F4C26B00C8E63D /* SwiftUIView.swift */; };
 		44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B628EA1055002A5118 /* OnRoadApp.swift */; };
 		44B725B928EA1055002A5118 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B828EA1055002A5118 /* ContentView.swift */; };
 		44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B725BA28EA1057002A5118 /* Assets.xcassets */; };
@@ -39,7 +38,6 @@
 
 /* Begin PBXFileReference section */
 		4431B09728F367730060B39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
-		4489A4C028F4C26B00C8E63D /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		44B725B328EA1055002A5118 /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B725B628EA1055002A5118 /* OnRoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRoadApp.swift; sourceTree = "<group>"; };
 		44B725B828EA1055002A5118 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -105,7 +103,6 @@
 			children = (
 				4431B09728F367730060B39B /* Info.plist */,
 				44B725B628EA1055002A5118 /* OnRoadApp.swift */,
-				4489A4C028F4C26B00C8E63D /* SwiftUIView.swift */,
 				44B725B828EA1055002A5118 /* ContentView.swift */,
 				44B7262028EA6A75002A5118 /* Settings.swift */,
 				44B7261E28EA6712002A5118 /* Home.swift */,
@@ -273,7 +270,6 @@
 			files = (
 				44B725B928EA1055002A5118 /* ContentView.swift in Sources */,
 				44B7262128EA6A75002A5118 /* Settings.swift in Sources */,
-				4489A4C128F4C26B00C8E63D /* SwiftUIView.swift in Sources */,
 				44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */,
 				44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */,
 				44B7261F28EA6712002A5118 /* Home.swift in Sources */,
