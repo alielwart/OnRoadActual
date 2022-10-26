@@ -62,11 +62,19 @@ struct OpenUI: View {
                     
                     //code to test vibrating xbox
                     
-                    //starts haptic engine
-                    startHapticEngine();
+                    print(GCController.controllers())
                     
-                    //play haptic pattern
-                    playHaptics();
+                    if(GCController.controllers() != []) {
+                        
+                        //starts haptic engine
+                        startHapticEngine();
+
+                        //play haptic pattern
+                        playHaptics();
+                        
+                    }
+                    
+                    
                     
                     
                 }, label: {
@@ -91,6 +99,7 @@ private var engineMap = [GCHapticsLocality: CHHapticEngine]()
 
 func startHapticEngine(){
     
+    print(GCController.controllers)
     
     var controller = GCController.controllers()[0]
     
