@@ -14,6 +14,7 @@ struct OpenUI: View {
     
     @Environment(\.colorScheme) var colorScheme
     
+    
     //TODO: overall make prettier 
     var body: some View {
         VStack(alignment: .center, spacing: 200) {
@@ -85,11 +86,11 @@ struct OpenUI_Previews: PreviewProvider {
     }
 }
 
+
+private var engineMap = [GCHapticsLocality: CHHapticEngine]()
+
 func startHapticEngine(){
     
-    
-    
-//    hapticEngine = controller.haptics?.createEngine(withLocality: .default);
     
     var controller = GCController.controllers()[0]
     
@@ -98,6 +99,8 @@ func startHapticEngine(){
         return
     }
     
+    engineMap[GCHapticsLocality.default] = engine
+
     do {
         try engine.start()
     } catch let error {
@@ -109,7 +112,34 @@ func startHapticEngine(){
 }
 
 func playHaptics(){
+    do {
+        
+        let hapticPlayer = try createPattern()
+        
+        try hapticPlayer?.start(atTime: CHHapticTimeImmediate)
+        
+    } catch let error {
+        print("Haptic Player Error: \(error) ")
+    }
+    
+    
+}
+
+func createPattern() throws -> CHHapticPatternPlayer? {
+    
+    let continuousEvent = CHHapticEvent(eventType: .hapticContinuous, parameters: [
+        CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5),
+        CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
+        ], relativeTime: 0, duration: 1)
+    
+    let pattern = try CHHapticPattern(events : [continuousEvent], parameters: [])
+    
+    let tempEng = engineMap[GCHapticsLocality.default]
+    
+    return try tempEng!.makePlayer(with: pattern)
     
     
     
 }
+
+
