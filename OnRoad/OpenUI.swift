@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+import GameController
+import Foundation
+import CoreHaptics
 
 struct OpenUI: View {
     
@@ -53,6 +56,24 @@ struct OpenUI: View {
                         Text("Please update your mobile device to IOS15 to use OnRoad")
                     }
                 }
+                
+                Button(action: {
+                    
+                    //code to test vibrating xbox
+                    
+                    //starts haptic engine
+                    startHapticEngine();
+                    
+                    //play haptic pattern
+                    playHaptics();
+                    
+                    
+                }, label: {
+                    Text("test vibration")
+                })
+                
+           
+                
             }
         }
     }
@@ -62,4 +83,33 @@ struct OpenUI_Previews: PreviewProvider {
     static var previews: some View {
         OpenUI().preferredColorScheme(.dark)
     }
+}
+
+func startHapticEngine(){
+    
+    
+    
+//    hapticEngine = controller.haptics?.createEngine(withLocality: .default);
+    
+    var controller = GCController.controllers()[0]
+    
+    guard let engine = controller.haptics?.createEngine(withLocality: .default) else {
+        print("Failed to create engine.")
+        return
+    }
+    
+    do {
+        try engine.start()
+    } catch let error {
+        fatalError("Engine Start Error: \(error)")
+    }
+    
+    
+    
+}
+
+func playHaptics(){
+    
+    
+    
 }
