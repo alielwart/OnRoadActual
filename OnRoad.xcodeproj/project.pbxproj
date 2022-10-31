@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0BBFBA822910447E009F0307 /* testBlue.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BBFBA812910447D009F0307 /* testBlue.swift */; };
 		44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B628EA1055002A5118 /* OnRoadApp.swift */; };
 		44B725B928EA1055002A5118 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B828EA1055002A5118 /* ContentView.swift */; };
 		44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B725BA28EA1057002A5118 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0BBFBA812910447D009F0307 /* testBlue.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = testBlue.swift; sourceTree = "<group>"; };
 		4431B09728F367730060B39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		44B725B328EA1055002A5118 /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B725B628EA1055002A5118 /* OnRoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRoadApp.swift; sourceTree = "<group>"; };
@@ -107,6 +109,7 @@
 				44B7262028EA6A75002A5118 /* Settings.swift */,
 				44B7261E28EA6712002A5118 /* Home.swift */,
 				44B7261C28EA2262002A5118 /* OpenUI.swift */,
+				0BBFBA812910447D009F0307 /* testBlue.swift */,
 				44B725BA28EA1057002A5118 /* Assets.xcassets */,
 				44B725BC28EA1057002A5118 /* Preview Content */,
 			);
@@ -269,6 +272,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44B725B928EA1055002A5118 /* ContentView.swift in Sources */,
+				0BBFBA822910447E009F0307 /* testBlue.swift in Sources */,
 				44B7262128EA6A75002A5118 /* Settings.swift in Sources */,
 				44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */,
 				44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */,
@@ -437,6 +441,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow for Bluetooth use";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow using bluetooth for discovering peripherals";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -469,6 +475,8 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
+				INFOPLIST_KEY_NSBluetoothAlwaysUsageDescription = "Allow for Bluetooth use";
+				INFOPLIST_KEY_NSBluetoothPeripheralUsageDescription = "Please allow using bluetooth for discovering peripherals";
 				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
