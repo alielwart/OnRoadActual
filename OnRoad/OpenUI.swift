@@ -159,21 +159,28 @@ func playHaptics(pattern: Int){
 
 func createPattern(pattern: Int) throws -> CHHapticPatternPlayer? {
     
-    let continuousEvent = CHHapticEvent(eventType: .hapticContinuous, parameters: [
-        CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5),
-        CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
+    let continuousEvent_1 = CHHapticEvent(eventType: .hapticContinuous, parameters: [
+        CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5 * Float(pattern)),
+        CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5 * Float(pattern))
         ], relativeTime: 0, duration: 1)
     
     let transientEvent = CHHapticEvent(eventType: .hapticTransient, parameters: [
         CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5),
         CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.9)
+    ], relativeTime: 0, duration: 0.5)
+    
+    let continuousEvent_2 = CHHapticEvent(eventType: .hapticContinuous, parameters: [
+        CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5),
+        CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
         ], relativeTime: 0, duration: 1)
     
-    var hapticPattern = try CHHapticPattern(events : [continuousEvent], parameters: [])
+    var hapticPattern = try CHHapticPattern(events : [continuousEvent_2], parameters: [])
     
     if(pattern == 2) {
         
-        hapticPattern = try CHHapticPattern(events : [continuousEvent, transientEvent], parameters: [])
+        print(pattern)
+        
+        hapticPattern = try CHHapticPattern(events : [continuousEvent_1, transientEvent, continuousEvent_2,  continuousEvent_1], parameters: [])
         
     }
     
