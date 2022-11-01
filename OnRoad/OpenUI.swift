@@ -70,7 +70,7 @@ struct OpenUI: View {
                         startHapticEngine();
 
                         //play haptic pattern
-                        playHaptics();
+                        playHaptics(pattern: 1);
                         
                     }
                     
@@ -78,7 +78,30 @@ struct OpenUI: View {
                     
                     
                 }, label: {
-                    Text("test vibration")
+                    Text("test vibration pattern 1")
+                })
+                
+                Button(action: {
+                    
+                    //code to test vibrating xbox
+                    
+                    print(GCController.controllers())
+                    
+                    if(GCController.controllers() != []) {
+                        
+                        //starts haptic engine
+                        startHapticEngine();
+
+                        //play haptic pattern
+                        playHaptics(pattern: 2);
+                        
+                    }
+                    
+                    
+                    
+                    
+                }, label: {
+                    Text("test vibration pattern 2")
                 })
                 
            
@@ -101,7 +124,7 @@ func startHapticEngine(){
     
     print(GCController.controllers)
     
-    var controller = GCController.controllers()[0]
+    let controller = GCController.controllers()[0]
     
     guard let engine = controller.haptics?.createEngine(withLocality: .default) else {
         print("Failed to create engine.")
@@ -120,10 +143,10 @@ func startHapticEngine(){
     
 }
 
-func playHaptics(){
+func playHaptics(pattern: Int){
     do {
         
-        let hapticPlayer = try createPattern()
+        let hapticPlayer = try createPattern(pattern: pattern)
         
         try hapticPlayer?.start(atTime: CHHapticTimeImmediate)
         
@@ -134,18 +157,29 @@ func playHaptics(){
     
 }
 
-func createPattern() throws -> CHHapticPatternPlayer? {
+func createPattern(pattern: Int) throws -> CHHapticPatternPlayer? {
     
     let continuousEvent = CHHapticEvent(eventType: .hapticContinuous, parameters: [
         CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5),
         CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.5)
         ], relativeTime: 0, duration: 1)
     
-    let pattern = try CHHapticPattern(events : [continuousEvent], parameters: [])
+    let transientEvent = CHHapticEvent(eventType: .hapticTransient, parameters: [
+        CHHapticEventParameter(parameterID: .hapticSharpness, value: 0.5),
+        CHHapticEventParameter(parameterID: .hapticIntensity, value: 0.9)
+        ], relativeTime: 0, duration: 1)
+    
+    var hapticPattern = try CHHapticPattern(events : [continuousEvent], parameters: [])
+    
+    if(pattern == 2) {
+        
+        hapticPattern = try CHHapticPattern(events : [continuousEvent, transientEvent], parameters: [])
+        
+    }
     
     let tempEng = engineMap[GCHapticsLocality.default]
     
-    return try tempEng!.makePlayer(with: pattern)
+    return try tempEng!.makePlayer(with: hapticPattern)
     
     
     
