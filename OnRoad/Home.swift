@@ -350,4 +350,4 @@ final class ContentViewModel: NSObject, ObservableObject, CLLocationManagerDeleg
             completion(location)
         }
     }
-}
+
