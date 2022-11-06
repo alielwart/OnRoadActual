@@ -16,8 +16,10 @@ import CoreBluetooth
 class BluetoothViewModel: NSObject, ObservableObject {
     private var centralManager: CBCentralManager?
     private var peripherals: [CBPeripheral] = [] //recording a list of the peripherals
+    private var paired: [CBPeripheral] = []
     
     @Published var peripheralNames: [String] = [] //in order to show list
+    @Published var pairedNames: [String] = []
     
     // to have central manager working, it needs a delegate and delegate methods
     
@@ -33,12 +35,20 @@ extension BluetoothViewModel: CBCentralManagerDelegate {
     func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if central.state == .poweredOn {
             self.centralManager?.scanForPeripherals(withServices: nil)
+            //retrieveConnectedPeripherals returns bluetooth devices connect to the syste/
+            //if peripheral state shows disconnected, that peripheral is not connected to central manager
+            let connected = self.centralManager?.retrieveConnectedPeripherals(withServices: [CBUUID(string: "180A")])
+             
+            for conpair in connected! {
+                paired.append(conpair)
+                pairedNames.append(conpair.name ?? "unnamed device")
+            }
         }
     }
     
-    //checking for new peripheral in our list
+    //scanning for new peripheral in our list
     func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
-        // if current list of peripherals doesn't containt the new one, append to list
+        // if current list of peripherals doesn't contain the new one, append to list
         if !peripherals.contains(peripheral) {
             self.peripherals.append(peripheral)
             self.peripheralNames.append(peripheral.name ?? "unnamed device") //not guaranteed to have a name
@@ -52,11 +62,17 @@ struct BlueView: View {
     
     var body: some View {
         NavigationView {
-            List(bluetoothViewModel.peripheralNames, id: \.self) {
-                 peripheral in Text(peripheral)
+//            List(bluetoothViewModel.peripheralNames, id: \.self) {
+//                 peripheral in Text(peripheral)
+//            }
+//            .navigationTitle("Peripherals")
+
+            List(bluetoothViewModel.pairedNames, id: \.self) {
+                peripheral in Text(peripheral)
             }
-            .navigationTitle("Peripherals")
+            .navigationTitle("Paired")
         }
+        .navigationViewStyle(.stack)
     }
 }
 
