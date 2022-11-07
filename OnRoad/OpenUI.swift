@@ -9,28 +9,34 @@ import SwiftUI
 
 struct OpenUI: View {
     
+    // Store environment's color scheme
     @Environment(\.colorScheme) var colorScheme
     
-    //TODO: overall make prettier 
+    // Access the environment object created in OnRoadApp.swift
+    @EnvironmentObject var settings: SettingsObj
+
+    // ~~~~~~~ OpenUI View Body ~~~~~~~~
     var body: some View {
         VStack(alignment: .center, spacing: 200) {
-            //TODO: change to OnRoad logo!
+            
+            // Set Logo based on color scheme
             if colorScheme == .light {
                 Image("logo")
             }
             else {
                 Image("logo-dark")
             }
-//            Text("Naviagtion Assistant")
-//                    .font(.title)
+
             VStack(alignment: .center, spacing: 50) {
+                
+                // NAVIGATE (HOME) BUTTON
                 NavigationLink(destination: Home()) {
                     if #available(iOS 15.0, *) { //xcode required this for devices not on ios15
                         Text("Navigate")
                             .padding()
                             .frame(minWidth: 0, maxWidth: 300)
                             .foregroundColor(.white)
-                            .background(.blue) //don't know what color yet
+                            .background(.blue)
                             .cornerRadius(40)
                             .font(.title)
                     } else {
@@ -39,24 +45,26 @@ struct OpenUI: View {
                     }
                 }
                 
+                // SETTINGS BUTTON
                 NavigationLink(destination: Settings()) {
                     if #available(iOS 15.0, *) { //xcode required this for devices not on ios15
                         Text("Settings")
                             .padding()
                             .frame(minWidth: 0, maxWidth: 300)
                             .foregroundColor(.white)
-                            .background(.blue) //don't know what color yet
+                            .background(.blue)
                             .cornerRadius(40)
                             .font(.title)
                     } else {
                         // Fallback on earlier versions
                         Text("Please update your mobile device to IOS15 to use OnRoad")
                     }
-                }
-            }
-        }
-    }
-}
+                    
+                } // Settings
+            } // VStack
+        } // VStack
+    } // body
+} // openUI
 
 struct OpenUI_Previews: PreviewProvider {
     static var previews: some View {
