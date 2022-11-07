@@ -10,12 +10,15 @@ import SwiftUI
 struct Settings: View {
     
     // Variables
-    @State private var vIntensity : Float = 5
+    @State private var vIntensity : Float = 1
     @State private var vFrequency : Float = 50
     @State private var vIsToggled : Bool = false
 
     // Publicly accessible settings
     @EnvironmentObject var settings: SettingsObj
+    
+    @Environment(\.colorScheme) var colorScheme
+
     
 //    TODO: Implement the vIsToggled and vIntensity as variables in a settings class object in the main page
     
@@ -23,13 +26,6 @@ struct Settings: View {
         NavigationView {
             
             Form {
-                
-                // TESTING VARIABLE
-                Text("TESTING VARIABLE")
-                Text("Intensity: ")
-                Text("\(settings.vIntensity, specifier: "%.0F")")
-                    .foregroundColor(settings.vIsToggled ? .blue : .gray)
-
 
                 // Main Vibration Toggle
                 Section(header: Text("Vibration")){
@@ -44,22 +40,35 @@ struct Settings: View {
                 Section{
                 
                     // Text: Vibration Intensity
-                    Text("Vibration Intensity: ").foregroundColor(settings.vIsToggled ? .black : .gray)
+                    if colorScheme == .light {
+                        Text("Vibration Intensity").foregroundColor(settings.vIsToggled ? .black : .gray)
+                    }
+                    else {
+                        Text("Vibration Intensity").foregroundColor(settings.vIsToggled ? .white : .gray)
+                    }
+
                     
                     // Slider
                     Slider(
                         value: $settings.vIntensity,
-                        in: 0...10,
+                        in: 1...2,
                         step: 1
                     ).padding(.horizontal, 20.0)
                         .accentColor(settings.vIsToggled ? .blue : .gray)
                 
+                    
                     // Intensity Level
                     Text("\(settings.vIntensity, specifier: "%.0F")")
                         .foregroundColor(settings.vIsToggled ? .blue : .gray)
 
+                    
                     // Text: Vibration Frequency
-                    Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .black : .gray)
+                    if colorScheme == .light {
+                        Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .black : .gray)
+                    }
+                    else {
+                        Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .white : .gray)
+                    }
                     
                     // Slider
                     Slider(
