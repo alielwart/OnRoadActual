@@ -17,6 +17,21 @@
 		44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261C28EA2262002A5118 /* OpenUI.swift */; };
 		44B7261F28EA6712002A5118 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261E28EA6712002A5118 /* Home.swift */; };
 		44B7262128EA6A75002A5118 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7262028EA6A75002A5118 /* Settings.swift */; };
+		B8FB44C229193EAF00DB3773 /* Drums.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44B629193EAF00DB3773 /* Drums.ahap */; };
+		B8FB44C329193EAF00DB3773 /* Drums.wav in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44B729193EAF00DB3773 /* Drums.wav */; };
+		B8FB44C529193EAF00DB3773 /* Rumble.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44B929193EAF00DB3773 /* Rumble.ahap */; };
+		B8FB44C629193EAF00DB3773 /* Oscillate.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BA29193EAF00DB3773 /* Oscillate.ahap */; };
+		B8FB44C729193EAF00DB3773 /* Sparkle.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BB29193EAF00DB3773 /* Sparkle.ahap */; };
+		B8FB44C929193EAF00DB3773 /* Triple.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BD29193EAF00DB3773 /* Triple.ahap */; };
+		B8FB44CA29193EAF00DB3773 /* Gravel.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BE29193EAF00DB3773 /* Gravel.ahap */; };
+		B8FB44CB29193EAF00DB3773 /* Heartbeats.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BF29193EAF00DB3773 /* Heartbeats.ahap */; };
+		B8FB44CC29193EAF00DB3773 /* Recharge.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44C029193EAF00DB3773 /* Recharge.ahap */; };
+		B8FB44CF29194BCF00DB3773 /* Boing1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44CD29194BCF00DB3773 /* Boing1.ahap */; };
+		B8FB44D029194BCF00DB3773 /* Boing2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44CE29194BCF00DB3773 /* Boing2.ahap */; };
+		B8FB44D52919529D00DB3773 /* Hit1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D12919529D00DB3773 /* Hit1.ahap */; };
+		B8FB44D62919529D00DB3773 /* Inflate2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D22919529D00DB3773 /* Inflate2.ahap */; };
+		B8FB44D72919529D00DB3773 /* Hit2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D32919529D00DB3773 /* Hit2.ahap */; };
+		B8FB44D82919529D00DB3773 /* Inflate1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D42919529D00DB3773 /* Inflate1.ahap */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,6 +66,21 @@
 		44B7261C28EA2262002A5118 /* OpenUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUI.swift; sourceTree = "<group>"; };
 		44B7261E28EA6712002A5118 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		44B7262028EA6A75002A5118 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
+		B8FB44B629193EAF00DB3773 /* Drums.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Drums.ahap; sourceTree = "<group>"; };
+		B8FB44B729193EAF00DB3773 /* Drums.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drums.wav; sourceTree = "<group>"; };
+		B8FB44B929193EAF00DB3773 /* Rumble.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rumble.ahap; sourceTree = "<group>"; };
+		B8FB44BA29193EAF00DB3773 /* Oscillate.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Oscillate.ahap; sourceTree = "<group>"; };
+		B8FB44BB29193EAF00DB3773 /* Sparkle.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sparkle.ahap; sourceTree = "<group>"; };
+		B8FB44BD29193EAF00DB3773 /* Triple.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Triple.ahap; sourceTree = "<group>"; };
+		B8FB44BE29193EAF00DB3773 /* Gravel.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gravel.ahap; sourceTree = "<group>"; };
+		B8FB44BF29193EAF00DB3773 /* Heartbeats.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Heartbeats.ahap; sourceTree = "<group>"; };
+		B8FB44C029193EAF00DB3773 /* Recharge.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Recharge.ahap; sourceTree = "<group>"; };
+		B8FB44CD29194BCF00DB3773 /* Boing1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Boing1.ahap; sourceTree = "<group>"; };
+		B8FB44CE29194BCF00DB3773 /* Boing2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Boing2.ahap; sourceTree = "<group>"; };
+		B8FB44D12919529D00DB3773 /* Hit1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hit1.ahap; sourceTree = "<group>"; };
+		B8FB44D22919529D00DB3773 /* Inflate2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Inflate2.ahap; sourceTree = "<group>"; };
+		B8FB44D32919529D00DB3773 /* Hit2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hit2.ahap; sourceTree = "<group>"; };
+		B8FB44D42919529D00DB3773 /* Inflate1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Inflate1.ahap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +131,7 @@
 		44B725B528EA1055002A5118 /* OnRoad */ = {
 			isa = PBXGroup;
 			children = (
+				B8FB44B429193EAF00DB3773 /* AHAP */,
 				4431B09728F367730060B39B /* Info.plist */,
 				44B725B628EA1055002A5118 /* OnRoadApp.swift */,
 				44B725B828EA1055002A5118 /* ContentView.swift */,
@@ -136,6 +167,28 @@
 				44B725D328EA1057002A5118 /* OnRoadUITestsLaunchTests.swift */,
 			);
 			path = OnRoadUITests;
+			sourceTree = "<group>";
+		};
+		B8FB44B429193EAF00DB3773 /* AHAP */ = {
+			isa = PBXGroup;
+			children = (
+				B8FB44CD29194BCF00DB3773 /* Boing1.ahap */,
+				B8FB44CE29194BCF00DB3773 /* Boing2.ahap */,
+				B8FB44D12919529D00DB3773 /* Hit1.ahap */,
+				B8FB44D32919529D00DB3773 /* Hit2.ahap */,
+				B8FB44D42919529D00DB3773 /* Inflate1.ahap */,
+				B8FB44D22919529D00DB3773 /* Inflate2.ahap */,
+				B8FB44B629193EAF00DB3773 /* Drums.ahap */,
+				B8FB44B729193EAF00DB3773 /* Drums.wav */,
+				B8FB44B929193EAF00DB3773 /* Rumble.ahap */,
+				B8FB44BA29193EAF00DB3773 /* Oscillate.ahap */,
+				B8FB44BB29193EAF00DB3773 /* Sparkle.ahap */,
+				B8FB44BD29193EAF00DB3773 /* Triple.ahap */,
+				B8FB44BE29193EAF00DB3773 /* Gravel.ahap */,
+				B8FB44BF29193EAF00DB3773 /* Heartbeats.ahap */,
+				B8FB44C029193EAF00DB3773 /* Recharge.ahap */,
+			);
+			path = AHAP;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -242,8 +295,23 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B8FB44C329193EAF00DB3773 /* Drums.wav in Resources */,
+				B8FB44CC29193EAF00DB3773 /* Recharge.ahap in Resources */,
+				B8FB44C229193EAF00DB3773 /* Drums.ahap in Resources */,
 				44B725BE28EA1057002A5118 /* Preview Assets.xcassets in Resources */,
 				44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */,
+				B8FB44C629193EAF00DB3773 /* Oscillate.ahap in Resources */,
+				B8FB44D82919529D00DB3773 /* Inflate1.ahap in Resources */,
+				B8FB44D62919529D00DB3773 /* Inflate2.ahap in Resources */,
+				B8FB44CA29193EAF00DB3773 /* Gravel.ahap in Resources */,
+				B8FB44D72919529D00DB3773 /* Hit2.ahap in Resources */,
+				B8FB44C529193EAF00DB3773 /* Rumble.ahap in Resources */,
+				B8FB44C929193EAF00DB3773 /* Triple.ahap in Resources */,
+				B8FB44CF29194BCF00DB3773 /* Boing1.ahap in Resources */,
+				B8FB44C729193EAF00DB3773 /* Sparkle.ahap in Resources */,
+				B8FB44CB29193EAF00DB3773 /* Heartbeats.ahap in Resources */,
+				B8FB44D029194BCF00DB3773 /* Boing2.ahap in Resources */,
+				B8FB44D52919529D00DB3773 /* Hit1.ahap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
