@@ -64,6 +64,8 @@ struct OpenUI: View {
                     }
                 }
                 
+                Text("\(settings.vIntensity, specifier: "%.0F")")
+                    .foregroundColor(settings.vIsToggled ? .blue : .gray)
                 
                 Button(action: {
                     
@@ -71,13 +73,18 @@ struct OpenUI: View {
                     
                     print(GCController.controllers())
                     
+                    // ensure to check that a controller is connected
                     if(GCController.controllers() != []) {
                         
                         //starts haptic engine
                         startHapticEngine();
+                        
+                        let intensity = settings.vIntensity
+                        
+                        let pattern = settings.Pattern
 
                         //play haptic pattern
-                        playHaptics(intensity: 2, pattern: 1)
+                        playHaptics(intensity: intensity, pattern: pattern)
                         
                     }
                     
@@ -85,32 +92,10 @@ struct OpenUI: View {
                     
                     
                 }, label: {
-                    Text("test vibration pattern 1")
+                    Text("test vibration")
                 })
                 
-                Button(action: {
-                    
-                    //code to test vibrating xbox
-                    
-                    print(GCController.controllers())
-                    
-                    if(GCController.controllers() != []) {
-                        
-                        //starts haptic engine
-                        startHapticEngine();
-
-                        
-                        playHaptics(intensity: 2, pattern: 2)
-                        
-                    }
-                    
-                    
-                    
-                    
-                }, label: {
-                    Text("test vibration pattern 2")
-                })
-                
+               
            
                 
             } // VStack

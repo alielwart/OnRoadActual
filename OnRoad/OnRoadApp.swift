@@ -7,12 +7,27 @@
 
 import SwiftUI
 
+enum Pattern: String, CaseIterable, Identifiable {
+    case hit, inflate
+    var id : Self {self}
+}
+
+enum Intensity: String, CaseIterable, Identifiable {
+    case half, full
+    var id : Self {self}
+}
+
 // SETTINGS: stored in observable object
 class SettingsObj: ObservableObject {
     
-    @Published var vIntensity : Float = 5
+
+    
+    @Published var selectedIntensity : Intensity? = .half
+    @Published var selectedPattern : Pattern = .hit
+    @Published var vIntensity : Int = 1
     @Published var vFrequency : Float = 50
     @Published var vIsToggled : Bool = true
+    @Published var Pattern : Int = 1
 }
 
 @main

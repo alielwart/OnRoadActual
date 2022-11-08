@@ -9,25 +9,31 @@ import SwiftUI
 
 struct Settings: View {
     
-    // Variables
-    @State private var vIntensity : Float = 1
-    @State private var vFrequency : Float = 50
-    @State private var vIsToggled : Bool = false
-
     // Publicly accessible settings
     @EnvironmentObject var settings: SettingsObj
     
     @Environment(\.colorScheme) var colorScheme
-
     
-//    TODO: Implement the vIsToggled and vIntensity as variables in a settings class object in the main page
+    enum Pattern: String, CaseIterable, Identifiable {
+        case hit, inflate
+        var id : Self {self}
+    }
     
+    @State private var selectedPattern: Pattern = .hit
+    
+    enum Intensity: String, CaseIterable, Identifiable {
+        case half, full
+        var id : Self {self}
+    }
+    
+    @State private var selectedIntensity: Intensity? = .half
+        
     var body: some View {
         NavigationView {
             
             Form {
 
-                // Main Vibration Toggle
+                // TOGGLE VIBRATION: ON & OFF
                 Section(header: Text("Vibration")){
                     
                     //TODO: implement working vibration on off
@@ -36,10 +42,11 @@ struct Settings: View {
                     })
                 }
                 
-                // More Vibration Settings
+                // VIBRATION SETTINGS
                 Section{
                 
-                    // Text: Vibration Intensity
+                    // ~~~~~~~~~~~~~ INTENSITY ~~~~~~~~~~~~~
+                    // TEXT: Intensity
                     if colorScheme == .light {
                         Text("Vibration Intensity").foregroundColor(settings.vIsToggled ? .black : .gray)
                     }
@@ -48,21 +55,56 @@ struct Settings: View {
                     }
 
                     
-                    // Slider
-                    Slider(
-                        value: $settings.vIntensity,
-                        in: 1...2,
-                        step: 1
-                    ).padding(.horizontal, 20.0)
-                        .accentColor(settings.vIsToggled ? .blue : .gray)
-                
+                    // PICKER: Intensity (LOCAL VARIABLE)
+                    Picker("Intensity", selection: $selectedIntensity) {
+                        
+                        Text("Half").tag(Intensity.half)
+                        Text("Full").tag(Intensity.full)
+                        
+                    }.pickerStyle(SegmentedPickerStyle())
                     
-                    // Intensity Level
-                    Text("\(settings.vIntensity, specifier: "%.0F")")
-                        .foregroundColor(settings.vIsToggled ? .blue : .gray)
+                    // PICKER: Intensity (GLOBAL VARIABLE)
+                    Picker("Intensity", selection: settings.selectedIntensity) {
 
+                        Text("Half").tag(Intensity.half)
+                        Text("Full").tag(Intensity.full)
+
+                    }.pickerStyle(SegmentedPickerStyle())
+
+
+                    // PICKER: Intensity (GLOBAL VARIABLE)
+//                    Picker("Select", selection: $selectedIntensity) {
+//                        ForEach(Intensity.allCases) { item in
+//                            Text(self.string(from: item)).tag(item)
+//                        }
+//                    }
                     
-                    // Text: Vibration Frequency
+                    // TESTING: Trying to access enum values
+//                    let enumName = String($selectedIntensity)
+                    var enumName = "\($selectedIntensity)"
+                    Text(enumName)
+                    Text("Intensity: \($selectedIntensity)" as String)
+                    let _ = print($selectedIntensity)
+                    
+                    // ~~~~~~~~~~~~~ PATTERN ~~~~~~~~~~~~~
+                    // TEXT: Pattern
+                    if colorScheme == .light {
+                        Text("Vibration Pattern").foregroundColor(settings.vIsToggled ? .black : .gray)
+                    }
+                    else {
+                        Text("Vibration Pattern").foregroundColor(settings.vIsToggled ? .white : .gray)
+                    }
+                   
+                    // PICKER: Pattern
+                    Picker("Pattern", selection: $selectedPattern) {
+                        
+                        Text("Hit").tag(Pattern.hit)
+                        Text("Inflate").tag(Pattern.inflate)
+                        
+                    }.pickerStyle(SegmentedPickerStyle())
+                    
+                    // ~~~~~~~~~~~~~ FREQUENCY ~~~~~~~~~~~~~
+                    // TEXT: Frequency
                     if colorScheme == .light {
                         Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .black : .gray)
                     }
@@ -70,7 +112,7 @@ struct Settings: View {
                         Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .white : .gray)
                     }
                     
-                    // Slider
+                    // SLIDER: Frequency
                     Slider(
                         value: $settings.vFrequency,
                         in: 0...100,
@@ -78,9 +120,11 @@ struct Settings: View {
                     ).padding(.horizontal, 20.0)
                         .accentColor(settings.vIsToggled ? .blue : .gray)
                 
-                    // Frequency Level
+                    // VALUE: Frequency
                     Text("\(settings.vFrequency, specifier: "%.0F")")
                         .foregroundColor(settings.vIsToggled ? .blue : .gray)
+                    
+                    
                     
                     
                 }.disabled(settings.vIsToggled == false)
