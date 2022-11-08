@@ -13,21 +13,8 @@ struct Settings: View {
     @EnvironmentObject var settings: SettingsObj
     
     @Environment(\.colorScheme) var colorScheme
+            
     
-    enum Pattern: String, CaseIterable, Identifiable {
-        case hit, inflate
-        var id : Self {self}
-    }
-    
-    @State private var selectedPattern: Pattern = .hit
-    
-    enum Intensity: String, CaseIterable, Identifiable {
-        case half, full
-        var id : Self {self}
-    }
-    
-    @State private var selectedIntensity: Intensity? = .half
-        
     var body: some View {
         NavigationView {
             
@@ -56,20 +43,26 @@ struct Settings: View {
 
                     
                     // PICKER: Intensity (LOCAL VARIABLE)
-                    Picker("Intensity", selection: $selectedIntensity) {
+                    Picker("Intensity", selection: $settings.vIntensity) {
                         
-                        Text("Half").tag(Intensity.half)
-                        Text("Full").tag(Intensity.full)
+                        Text("Half").tag(1)
+                        Text("Full").tag(2)
                         
                     }.pickerStyle(SegmentedPickerStyle())
                     
-                    // PICKER: Intensity (GLOBAL VARIABLE)
-                    Picker("Intensity", selection: settings.selectedIntensity) {
-
-                        Text("Half").tag(Intensity.half)
-                        Text("Full").tag(Intensity.full)
-
-                    }.pickerStyle(SegmentedPickerStyle())
+                    
+                    
+              
+                    
+                    
+                    
+//                    // PICKER: Intensity (GLOBAL VARIABLE)
+//                    Picker("Intensity", selection: settings.selectedIntensity) {
+//
+//                        Text("Half").tag(Intensity.half)
+//                        Text("Full").tag(Intensity.full)
+//
+//                    }.pickerStyle(SegmentedPickerStyle())
 
 
                     // PICKER: Intensity (GLOBAL VARIABLE)
@@ -81,10 +74,10 @@ struct Settings: View {
                     
                     // TESTING: Trying to access enum values
 //                    let enumName = String($selectedIntensity)
-                    var enumName = "\($selectedIntensity)"
-                    Text(enumName)
-                    Text("Intensity: \($selectedIntensity)" as String)
-                    let _ = print($selectedIntensity)
+//                    var enumName = "\($selectedIntensity)"
+//                    Text(enumName)
+//                    Text("Intensity: \($selectedIntensity)" as String)
+//                    let _ = print($selectedIntensity)
                     
                     // ~~~~~~~~~~~~~ PATTERN ~~~~~~~~~~~~~
                     // TEXT: Pattern
@@ -96,10 +89,10 @@ struct Settings: View {
                     }
                    
                     // PICKER: Pattern
-                    Picker("Pattern", selection: $selectedPattern) {
+                    Picker("Pattern", selection: $settings.Pattern) {
                         
-                        Text("Hit").tag(Pattern.hit)
-                        Text("Inflate").tag(Pattern.inflate)
+                        Text("Inflate").tag(1)
+                        Text("Hit").tag(2)
                         
                     }.pickerStyle(SegmentedPickerStyle())
                     
@@ -128,6 +121,7 @@ struct Settings: View {
                     
                     
                 }.disabled(settings.vIsToggled == false)
+                
 
                 
                 

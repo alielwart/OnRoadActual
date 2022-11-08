@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <array>
-	<string>MapKit</string>
-	<string>SwiftUI</string>
-	<string>OnRoad</string>
-	<string>GameController</string>
 	<string>XCTest</string>
+	<string>SwiftUI</string>
+	<string>MapKit</string>
+	<string>GameController</string>
 	<string>CoreHaptics</string>
+	<string>OnRoad</string>
 	<string>AudioToolbox</string>
 	<string>AVFoundation</string>
 	<string>Foundation</string>

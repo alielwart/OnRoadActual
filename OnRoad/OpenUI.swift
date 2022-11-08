@@ -17,6 +17,9 @@ struct OpenUI: View {
     
     // Access the environment object created in OnRoadApp.swift
     @EnvironmentObject var settings: SettingsObj
+    
+    // SETTINGS: stored in observable object
+    
 
     // ~~~~~~~ OpenUI View Body ~~~~~~~~
     var body: some View {
@@ -64,14 +67,18 @@ struct OpenUI: View {
                     }
                 }
                 
-                Text("\(settings.vIntensity, specifier: "%.0F")")
-                    .foregroundColor(settings.vIsToggled ? .blue : .gray)
+//                Text("\(settings.vIntensity, specifier: "%.0F")")
+//                    .foregroundColor(settings.vIsToggled ? .blue : .gray)
+                
+                
                 
                 Button(action: {
                     
                     //code to test vibrating xbox
                     
-                    print(GCController.controllers())
+//                    print(GCController.controllers())
+                    print(settings.vIntensity)
+                    print(settings.Pattern)
                     
                     // ensure to check that a controller is connected
                     if(GCController.controllers() != []) {
@@ -139,8 +146,8 @@ func startHapticEngine(){
 }
 
 //two patterns- one is a sharp vibration and the other is gradual - input is either 1 or 2
-//pattern : 1 -> gradual vibration
-//pattern : 2 -> sharp vibration
+//pattern : 1 -> gradual vibration (inflate)
+//pattern : 2 -> sharp vibration (hit)
 //two intensities - input is either 1 or 2
 //intensity : 1 -> half intensity
 //intensity : 2 -> full intensity
