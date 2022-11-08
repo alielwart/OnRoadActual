@@ -168,13 +168,17 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
         let navigationViewController = NavigationViewController(for: routeResponse, routeIndex: 0, routeOptions: routeOptions)
         navigationViewController.modalPresentationStyle = .fullScreen
         
-        for route in routeResponse {
-            
+        var dummy = 0;
+        for route in routeResponse.routes! {
+            if (dummy == 0) {
+                for leg in route.legs {
+                    for st in leg.steps {
+                        print("Instruction: ", st)
+                    }
+                }
+            }
+            dummy = dummy + 1;
         }
-        //Route response is where directions
-        print("INSTRUCTIONS!!: ", routeResponse.routes?[0].legs[0].steps[0].instructions)
-        print("INSTRUCTIONS!!: ", routeResponse.routes?[0].legs[0].steps[1].instructions)
-
         self.present(navigationViewController, animated: false, completion: nil)
     }
 }
