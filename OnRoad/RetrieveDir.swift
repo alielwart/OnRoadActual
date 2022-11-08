@@ -16,19 +16,11 @@ import CoreLocation
 /*
  1. Replace the long press to get destination location with a text input
  2. Time the vibrations correctly with upcoming directions
+        Need to do something to prevent for loop going to the end immediately
  3. Annotate/Clean Up
  */
 
-// HELPFUL DOCUMENTATION
-/*
- 1. RouteStep: https://docs.mapbox.com/archive/ios/directions/api/1.0.0/Classes/RouteStep.html
- 2. Route: https://docs.mapbox.com/ios/directions/api/1.2.0/Classes/Route.html
- 3. Route Lep: https://docs.mapbox.com/ios/directions/api/1.1.0/Classes/RouteLeg.html
- 4. RouteOptions: https://docs.mapbox.com/ios/directions/api/1.1.0/Classes/RouteOptions.html
- 
- Have to set routeOptions.includesSteps = true
- then in the routeResponse.routes[0] (first route returned) iterate through all the route legs and within each leg iterate through all the steps instructions
- */
+//HELP IN MAPBOX_DOCS FILE
 
 //combine swiftui and storyboard
 struct DirMaps: View {
@@ -166,18 +158,18 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
             return
         }
         let navigationViewController = NavigationViewController(for: routeResponse, routeIndex: 0, routeOptions: routeOptions)
+        
         navigationViewController.modalPresentationStyle = .fullScreen
         
-        var dummy = 0;
-        for route in routeResponse.routes! {
-            if (dummy == 0) {
-                for leg in route.legs {
-                    for st in leg.steps {
-                        print("Instruction: ", st)
-                    }
-                }
+        // ERROR: for loops run before api call? returns navigation controller...need to find a way to call this after api call returns OR have a separate function that only check whether progress has been made using notifications: https://stackoverflow.com/questions/57309240/mapbox-navigation-in-ios-with-in-my-mapview-controller
+        
+        // go to mapbox_docs section 2 for further directions on debugging
+
+        
+        for leg in navigationViewController.route!.legs {
+            if (leg == navigationViewController.navigationService.routeProgress.currentLeg) {
+                print("INSTRUCTION!!: ", navigationViewController.navigationService.routeProgress.upcomingStep!)
             }
-            dummy = dummy + 1;
         }
         self.present(navigationViewController, animated: false, completion: nil)
     }
