@@ -24,7 +24,7 @@ struct OpenUI: View {
 //            Text("Naviagtion Assistant")
 //                    .font(.title)
             VStack(alignment: .center, spacing: 50) {
-                NavigationLink(destination: maps()) {
+                NavigationLink(destination: DirMaps()) {
                     if #available(iOS 15.0, *) { //xcode required this for devices not on ios15
                         Text("Navigate")
                             .padding()
