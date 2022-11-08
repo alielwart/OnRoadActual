@@ -14,6 +14,13 @@ struct OpenUI: View {
     
     @Environment(\.colorScheme) var colorScheme
     
+    enum Pattern: String, CaseIterable, Identifiable {
+        case hit, inflate
+        var id: Self { self }
+    }
+
+    @State private var selectedPattern: Pattern = .hit
+    
     
     //TODO: overall make prettier 
     var body: some View {
@@ -58,53 +65,60 @@ struct OpenUI: View {
                     }
                 }
                 
-                Button(action: {
-                    
-                    //code to test vibrating xbox
-                    
-                    print(GCController.controllers())
-                    
-                    if(GCController.controllers() != []) {
-                        
-                        //starts haptic engine
-                        startHapticEngine();
-
-                        //play haptic pattern
-                        playHaptics(intensity: 2, pattern: 1)
-                        
-                    }
-                    
-                    
-                    
-                    
-                }, label: {
-                    Text("test vibration pattern 1")
-                })
+//                Button(action: {
+////
+////                    //code to test vibrating xbox
+////
+////                    print(GCController.controllers())
+////
+////                    if(GCController.controllers() != []) {
+////
+////                        //starts haptic engine
+////                        startHapticEngine();
+////
+////                        //play haptic pattern
+////                        playHaptics(intensity: 2, pattern: 1)
+////
+////                    }
+////
+////
+////
+////
+////                }, label: {
+////                    Text("test vibration pattern 1")
+////                })
                 
-                Button(action: {
-                    
-                    //code to test vibrating xbox
-                    
-                    print(GCController.controllers())
-                    
-                    if(GCController.controllers() != []) {
-                        
-                        //starts haptic engine
-                        startHapticEngine();
-
-                        
-                        playHaptics(intensity: 2, pattern: 2)
-                        
-                    }
-                    
-                    
-                    
-                    
-                }, label: {
-                    Text("test vibration pattern 2")
-                })
+//                Button(action: {
+//
+//                    //code to test vibrating xbox
+//
+//                    print(GCController.controllers())
+//
+//                    if(GCController.controllers() != []) {
+//
+//                        //starts haptic engine
+//                        startHapticEngine();
+//
+//
+//                        playHaptics(intensity: 2, pattern: 2)
+//
+//                    }
+//
+//
+//
+//
+//                }, label: {
+//                    Text("test vibration pattern 2")
+//                })
                 
-           
+                Form {
+                    
+                    Picker("Pattern", selection: $selectedPattern) {
+                        Text("Hit").tag(Pattern.hit)
+                        Text("Inflate").tag(Pattern.inflate)
+                    }.pickerStyle(SegmentedPickerStyle())
+                    
+                }
                 
             }
         }
@@ -123,6 +137,7 @@ struct OpenUI_Previews: PreviewProvider {
 private var engineMap = [GCHapticsLocality: CHHapticEngine]()
 
 //starts the haptic engine
+//must start engine before playing haptics
 func startHapticEngine(){
     
     print(GCController.controllers)
