@@ -11,6 +11,9 @@ import MapboxDirections
 import MapboxCoreNavigation
 import MapboxNavigation
 import CoreLocation
+import MapboxSpeech
+import Foundation
+import AVFoundation
 
 // NEED TO DO:
 /*
@@ -116,6 +119,7 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
             case .failure(let error):
                 print(error.localizedDescription)
             case .success(let response):
+                self?.presentNavigationWithCustomVoiceController(routeOptions: routeOptions, response: response)
                 guard let route = response.routes?.first, let strongSelf = self else {
                     return
                 }
@@ -150,6 +154,37 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
         // Show destination waypoint on the map
         navigationMapView.showWaypoints(on: route)
     }
+    
+    func presentNavigationWithCustomVoiceController(routeOptions: NavigationRouteOptions, response: RouteResponse) {
+        // For demonstration purposes, simulate locations if the Simulate Navigation option is on.
+        let navigationService = MapboxNavigationService(routeResponse: response,
+                                                        routeIndex: 0,
+                                                        routeOptions: routeOptions,
+                                                        customRoutingProvider: NavigationSettings.shared.directions,
+                                                        credentials: NavigationSettings.shared.directions.credentials)
+        
+        // `MultiplexedSpeechSynthesizer` will provide "a backup" functionality to cover cases, which
+        // our custom implementation cannot handle.
+        let speechSynthesizer = MultiplexedSpeechSynthesizer([CustomVoiceController(), SystemSpeechSynthesizer()])
+        
+        // Create a `RouteVoiceController` type with a customized `SpeechSynthesizing` instance.
+        // A route voice controller monitors turn-by-turn navigation events and triggers playing spoken instructions
+        // as audio using the custom `speechSynthesizer` we created above.
+        let routeVoiceController = RouteVoiceController(navigationService: navigationService,
+                                                        speechSynthesizer: speechSynthesizer)
+        // Remember to pass our RouteVoiceController` to `Navigation Options`!
+        let navigationOptions = NavigationOptions(navigationService: navigationService,
+                                                  voiceController: routeVoiceController)
+        
+        // Create `NavigationViewController` with the custom `NavigationOptions`.
+        let navigationViewController = NavigationViewController(for: response,
+                                                                routeIndex: 0,
+                                                                routeOptions: routeOptions,
+                                                                navigationOptions: navigationOptions)
+        //navigationViewController.modalPresentationStyle = .fullScreen
+        
+        present(navigationViewController, animated: true, completion: nil)
+    }
 
     // Present the navigation view controller when the annotation is selected
     func annotationManager(_ manager: AnnotationManager, didDetectTappedAnnotations annotations: [Annotation]) {
@@ -166,11 +201,57 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
         // go to mapbox_docs section 2 for further directions on debugging
 
         
-        for leg in navigationViewController.route!.legs {
-            if (leg == navigationViewController.navigationService.routeProgress.currentLeg) {
-                print("INSTRUCTION!!: ", navigationViewController.navigationService.routeProgress.upcomingStep!)
-            }
-        }
+       /*  */
         self.present(navigationViewController, animated: false, completion: nil)
+        print("moves")
+        
+        for leg in navigationViewController.route!.legs {
+             if (leg == navigationViewController.navigationService.routeProgress.currentLeg) {
+                 print("INSTRUCTION!!: ", navigationViewController.navigationService.routeProgress.upcomingStep!)
+             }
+         }
+    }
+    
+}
+
+class CustomVoiceController: MapboxSpeechSynthesizer {
+    
+    // You will need audio files for as many or few cases as you'd like to handle
+    // This example just covers left and right. All other cases will fail the Custom Voice Controller and
+    // force a backup System Speech to kick in
+    //let turnLeft = NSDataAsset(name: "turnleft")!.data
+    //let turnRight = NSDataAsset(name: "turnright")!.data
+    
+    override func speak(_ instruction: SpokenInstruction, during legProgress: RouteLegProgress, locale: Locale? = nil) {
+        
+        guard let soundForInstruction = audio(for: legProgress.currentStep) else {
+            // When `MultiplexedSpeechSynthesizer` receives an error from one of it's Speech Synthesizers,
+            // it requests the next on the list
+            delegate?.speechSynthesizer(self,
+                                        didSpeak: instruction,
+                                        with: SpeechError.noData(instruction: instruction,
+                                                                 options: SpeechOptions(text: instruction.text)))
+            return
+        }
+        speak(instruction, data: soundForInstruction)
+    }
+    
+    func audio(for step: RouteStep) -> Data? {
+        switch step.maneuverDirection {
+        case .left:
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
+            AudioServicesPlayAlertSound(SystemSoundID(1075))
+            //let turnLeft = NSDataAsset(name: "turnleft")!.data
+            print("left turn")
+            return nil
+        case .right:
+            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
+            AudioServicesPlayAlertSound(SystemSoundID(1075))
+           // let turnRight = NSDataAsset(name: "turnright")!.data
+            print("right turn")
+            return nil
+        default:
+            return nil // this will force report that Custom View Controller is unable to handle this case
+        }
     }
 }
