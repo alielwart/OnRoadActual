@@ -10,6 +10,7 @@
 		0B374B2A291ABAF100EC42CC /* nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B374B29291ABAF100EC42CC /* nav.swift */; };
 		0BA0DAE9291B6BEE00C38F79 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DAE8291B6BEE00C38F79 /* Origin.swift */; };
 		0BBFBFB9291ADE0800677A9C /* mapbox_docs.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */; };
+		0BC73D24291C071B005887C1 /* AHAP in Resources */ = {isa = PBXBuildFile; fileRef = 0BC73D23291C071B005887C1 /* AHAP */; };
 		444CBDD028F671C500401248 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CBDCF28F671C500401248 /* SwiftUIView.swift */; };
 		44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B628EA1055002A5118 /* OnRoadApp.swift */; };
 		44B725B928EA1055002A5118 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B828EA1055002A5118 /* ContentView.swift */; };
@@ -47,6 +48,7 @@
 		0B374B29291ABAF100EC42CC /* nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nav.swift; sourceTree = "<group>"; };
 		0BA0DAE8291B6BEE00C38F79 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 		0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = mapbox_docs.rtf; sourceTree = "<group>"; };
+		0BC73D23291C071B005887C1 /* AHAP */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AHAP; sourceTree = "<group>"; };
 		4431B09728F367730060B39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		444CBDCF28F671C500401248 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		44B725B328EA1055002A5118 /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 			children = (
 				0B03FFE8291BF818007643A3 /* archive */,
 				4431B09728F367730060B39B /* Info.plist */,
+				0BC73D23291C071B005887C1 /* AHAP */,
 				44B725B628EA1055002A5118 /* OnRoadApp.swift */,
 				44B725B828EA1055002A5118 /* ContentView.swift */,
 				44B7262028EA6A75002A5118 /* Settings.swift */,
@@ -278,6 +281,7 @@
 			files = (
 				0BBFBFB9291ADE0800677A9C /* mapbox_docs.rtf in Resources */,
 				44B725BE28EA1057002A5118 /* Preview Assets.xcassets in Resources */,
+				0BC73D24291C071B005887C1 /* AHAP in Resources */,
 				44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -14,6 +14,7 @@ import CoreLocation
 import MapboxSpeech
 import Foundation
 import AVFoundation
+import GameController
 
 // NEED TO DO:
 /*
@@ -243,18 +244,47 @@ class CustomVoiceController: MapboxSpeechSynthesizer {
     //Also need to determine when vibrations will be sent, this is based on leg, step information, maneuver direction, and how close they are to the turn
     
     func audio(for step: RouteStep) -> Data? {
+        @EnvironmentObject var settings: SettingsObj
+
         switch step.maneuverDirection {
         case .left:
-            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
-            AudioServicesPlayAlertSound(SystemSoundID(1075))
-            //let turnLeft = NSDataAsset(name: "turnleft")!.data
-            print("left turn")
+//            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
+//            AudioServicesPlayAlertSound(SystemSoundID(1075))
+//            //let turnLeft = NSDataAsset(name: "turnleft")!.data
+//            print("left turn")
+            
+            if(GCController.controllers() != []) {
+                
+                //starts haptic engine
+                startHapticEngine();
+                
+                let intensity = settings.vIntensity
+                
+                let pattern = settings.Pattern
+
+                //play haptic pattern
+                playHaptics(intensity: intensity, pattern: pattern)
+                
+            }
             return nil
         case .right:
-            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
-            AudioServicesPlayAlertSound(SystemSoundID(1075))
-           // let turnRight = NSDataAsset(name: "turnright")!.data
-            print("right turn")
+//            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
+//            AudioServicesPlayAlertSound(SystemSoundID(1075))
+//           // let turnRight = NSDataAsset(name: "turnright")!.data
+//            print("right turn")
+            if(GCController.controllers() != []) {
+                
+                //starts haptic engine
+                startHapticEngine();
+                
+                let intensity = settings.vIntensity
+                
+                let pattern = settings.Pattern
+
+                //play haptic pattern
+                playHaptics(intensity: intensity, pattern: pattern)
+                
+            }
             return nil
         default:
             return nil // this will force report that Custom View Controller is unable to handle this case
