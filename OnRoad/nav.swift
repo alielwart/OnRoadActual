@@ -16,6 +16,7 @@ import Foundation
 import AVFoundation
 import GameController
 
+
 // NEED TO DO:
 /*
  1. Replace the long press to get destination location with a text input
@@ -28,8 +29,10 @@ import GameController
 
 //combine swiftui and storyboard
 struct DirMaps: View {
+    @EnvironmentObject var settings: SettingsObj
+
     var body: some View {
-        DirViewWrapper()
+        DirViewWrapper().environmentObject(settings)
     }
 }
 
@@ -41,6 +44,8 @@ struct DirMaps_Previews: PreviewProvider {
 
 //wrapper
 struct DirViewWrapper : UIViewControllerRepresentable {
+    @EnvironmentObject var settings: SettingsObj
+
     func makeUIViewController(context: Context) -> DirViewController {
         return DirViewController()
     }
@@ -56,6 +61,8 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
     var navigationMapView: NavigationMapView!
     var routeOptions: NavigationRouteOptions?
     var routeResponse: RouteResponse?
+    @EnvironmentObject var settings: SettingsObj
+
 
     var beginAnnotation: PointAnnotation?
     
@@ -218,7 +225,8 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
 }
 
 class CustomVoiceController: MapboxSpeechSynthesizer {
-    
+    @EnvironmentObject var settings: SettingsObj
+
     // You will need audio files for as many or few cases as you'd like to handle
     // This example just covers left and right. All other cases will fail the Custom Voice Controller and
     // force a backup System Speech to kick in
@@ -244,7 +252,6 @@ class CustomVoiceController: MapboxSpeechSynthesizer {
     //Also need to determine when vibrations will be sent, this is based on leg, step information, maneuver direction, and how close they are to the turn
     
     func audio(for step: RouteStep) -> Data? {
-        @EnvironmentObject var settings: SettingsObj
 
         switch step.maneuverDirection {
         case .left:
@@ -258,9 +265,9 @@ class CustomVoiceController: MapboxSpeechSynthesizer {
                 //starts haptic engine
                 startHapticEngine();
                 
-                let intensity = settings.vIntensity
+                let intensity = 2
                 
-                let pattern = settings.Pattern
+                let pattern = 2
 
                 //play haptic pattern
                 playHaptics(intensity: intensity, pattern: pattern)
@@ -277,9 +284,9 @@ class CustomVoiceController: MapboxSpeechSynthesizer {
                 //starts haptic engine
                 startHapticEngine();
                 
-                let intensity = settings.vIntensity
+                let intensity = 2
                 
-                let pattern = settings.Pattern
+                let pattern = 2
 
                 //play haptic pattern
                 playHaptics(intensity: intensity, pattern: pattern)
