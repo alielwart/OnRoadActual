@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B374B2A291ABAF100EC42CC /* RetrieveDir.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B374B29291ABAF100EC42CC /* RetrieveDir.swift */; };
+		0BA0DAE9291B6BEE00C38F79 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DAE8291B6BEE00C38F79 /* Origin.swift */; };
 		0BBFBFB9291ADE0800677A9C /* mapbox_docs.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */; };
 		444CBDD028F671C500401248 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CBDCF28F671C500401248 /* SwiftUIView.swift */; };
 		44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B628EA1055002A5118 /* OnRoadApp.swift */; };
@@ -44,6 +45,7 @@
 
 /* Begin PBXFileReference section */
 		0B374B29291ABAF100EC42CC /* RetrieveDir.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RetrieveDir.swift; sourceTree = "<group>"; };
+		0BA0DAE8291B6BEE00C38F79 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 		0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = mapbox_docs.rtf; sourceTree = "<group>"; };
 		4431B09728F367730060B39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		444CBDCF28F671C500401248 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				44DE92F9291978FE005143C3 /* maps.swift */,
 				44B7261C28EA2262002A5118 /* OpenUI.swift */,
 				0B374B29291ABAF100EC42CC /* RetrieveDir.swift */,
+				0BA0DAE8291B6BEE00C38F79 /* Origin.swift */,
 				0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */,
 				44B725BA28EA1057002A5118 /* Assets.xcassets */,
 				44B725BC28EA1057002A5118 /* Preview Content */,
@@ -292,6 +295,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BA0DAE9291B6BEE00C38F79 /* Origin.swift in Sources */,
 				44B725B928EA1055002A5118 /* ContentView.swift in Sources */,
 				0B374B2A291ABAF100EC42CC /* RetrieveDir.swift in Sources */,
 				44B7262128EA6A75002A5118 /* Settings.swift in Sources */,
@@ -464,19 +468,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always Shows your location on the map and helps improve the map";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Shows your location on the map and helps improve the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoad;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -496,19 +501,20 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always Shows your location on the map and helps improve the map";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Shows your location on the map and helps improve the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoad;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -523,6 +529,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -547,6 +554,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -570,6 +578,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -592,6 +601,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

@@ -161,8 +161,10 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
                                                         routeIndex: 0,
                                                         routeOptions: routeOptions,
                                                         customRoutingProvider: NavigationSettings.shared.directions,
-                                                        credentials: NavigationSettings.shared.directions.credentials)
+                                                        credentials: NavigationSettings.shared.directions.credentials,
+                                                        simulating: .always)
         
+        navigationService.simulationSpeedMultiplier = 2.0;
         // `MultiplexedSpeechSynthesizer` will provide "a backup" functionality to cover cases, which
         // our custom implementation cannot handle.
         let speechSynthesizer = MultiplexedSpeechSynthesizer([CustomVoiceController(), SystemSpeechSynthesizer()])
@@ -202,7 +204,7 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
 
         
        /*  */
-        self.present(navigationViewController, animated: false, completion: nil)
+        self.present(navigationViewController, animated: true, completion: nil)
         print("moves")
         
         for leg in navigationViewController.route!.legs {
@@ -235,6 +237,10 @@ class CustomVoiceController: MapboxSpeechSynthesizer {
         }
         speak(instruction, data: soundForInstruction)
     }
+    
+    //the issue is that we are missing the first turn + we are syncing up to the voice (will need to be able to sync without it in case driver doesn't want it)
+    //we will need to sync it up another with a navigation servce that is customized for both sound on and sound off
+    //Also need to determine when vibrations will be sent, this is based on leg, step information, maneuver direction, and how close they are to the turn
     
     func audio(for step: RouteStep) -> Data? {
         switch step.maneuverDirection {
