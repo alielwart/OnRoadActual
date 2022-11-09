@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0B374B2A291ABAF100EC42CC /* nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B374B29291ABAF100EC42CC /* nav.swift */; };
+		0BA0DAE9291B6BEE00C38F79 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DAE8291B6BEE00C38F79 /* Origin.swift */; };
+		0BBFBFB9291ADE0800677A9C /* mapbox_docs.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */; };
+		444CBDD028F671C500401248 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CBDCF28F671C500401248 /* SwiftUIView.swift */; };
 		44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B628EA1055002A5118 /* OnRoadApp.swift */; };
 		44B725B928EA1055002A5118 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B828EA1055002A5118 /* ContentView.swift */; };
 		44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 44B725BA28EA1057002A5118 /* Assets.xcassets */; };
@@ -17,21 +21,9 @@
 		44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261C28EA2262002A5118 /* OpenUI.swift */; };
 		44B7261F28EA6712002A5118 /* Home.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7261E28EA6712002A5118 /* Home.swift */; };
 		44B7262128EA6A75002A5118 /* Settings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B7262028EA6A75002A5118 /* Settings.swift */; };
-		B8FB44C229193EAF00DB3773 /* Drums.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44B629193EAF00DB3773 /* Drums.ahap */; };
-		B8FB44C329193EAF00DB3773 /* Drums.wav in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44B729193EAF00DB3773 /* Drums.wav */; };
-		B8FB44C529193EAF00DB3773 /* Rumble.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44B929193EAF00DB3773 /* Rumble.ahap */; };
-		B8FB44C629193EAF00DB3773 /* Oscillate.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BA29193EAF00DB3773 /* Oscillate.ahap */; };
-		B8FB44C729193EAF00DB3773 /* Sparkle.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BB29193EAF00DB3773 /* Sparkle.ahap */; };
-		B8FB44C929193EAF00DB3773 /* Triple.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BD29193EAF00DB3773 /* Triple.ahap */; };
-		B8FB44CA29193EAF00DB3773 /* Gravel.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BE29193EAF00DB3773 /* Gravel.ahap */; };
-		B8FB44CB29193EAF00DB3773 /* Heartbeats.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44BF29193EAF00DB3773 /* Heartbeats.ahap */; };
-		B8FB44CC29193EAF00DB3773 /* Recharge.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44C029193EAF00DB3773 /* Recharge.ahap */; };
-		B8FB44CF29194BCF00DB3773 /* Boing1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44CD29194BCF00DB3773 /* Boing1.ahap */; };
-		B8FB44D029194BCF00DB3773 /* Boing2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44CE29194BCF00DB3773 /* Boing2.ahap */; };
-		B8FB44D52919529D00DB3773 /* Hit1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D12919529D00DB3773 /* Hit1.ahap */; };
-		B8FB44D62919529D00DB3773 /* Inflate2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D22919529D00DB3773 /* Inflate2.ahap */; };
-		B8FB44D72919529D00DB3773 /* Hit2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D32919529D00DB3773 /* Hit2.ahap */; };
-		B8FB44D82919529D00DB3773 /* Inflate1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = B8FB44D42919529D00DB3773 /* Inflate1.ahap */; };
+		44DE92F6291959A0005143C3 /* MapboxCoreNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 44DE92F5291959A0005143C3 /* MapboxCoreNavigation */; };
+		44DE92F8291959A0005143C3 /* MapboxNavigation in Frameworks */ = {isa = PBXBuildFile; productRef = 44DE92F7291959A0005143C3 /* MapboxNavigation */; };
+		44DE92FA291978FE005143C3 /* maps.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE92F9291978FE005143C3 /* maps.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,7 +44,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		0B374B29291ABAF100EC42CC /* nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nav.swift; sourceTree = "<group>"; };
+		0BA0DAE8291B6BEE00C38F79 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
+		0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = mapbox_docs.rtf; sourceTree = "<group>"; };
 		4431B09728F367730060B39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		444CBDCF28F671C500401248 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		44B725B328EA1055002A5118 /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		44B725B628EA1055002A5118 /* OnRoadApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnRoadApp.swift; sourceTree = "<group>"; };
 		44B725B828EA1055002A5118 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -66,21 +62,7 @@
 		44B7261C28EA2262002A5118 /* OpenUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenUI.swift; sourceTree = "<group>"; };
 		44B7261E28EA6712002A5118 /* Home.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Home.swift; sourceTree = "<group>"; };
 		44B7262028EA6A75002A5118 /* Settings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Settings.swift; sourceTree = "<group>"; };
-		B8FB44B629193EAF00DB3773 /* Drums.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Drums.ahap; sourceTree = "<group>"; };
-		B8FB44B729193EAF00DB3773 /* Drums.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = Drums.wav; sourceTree = "<group>"; };
-		B8FB44B929193EAF00DB3773 /* Rumble.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Rumble.ahap; sourceTree = "<group>"; };
-		B8FB44BA29193EAF00DB3773 /* Oscillate.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Oscillate.ahap; sourceTree = "<group>"; };
-		B8FB44BB29193EAF00DB3773 /* Sparkle.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Sparkle.ahap; sourceTree = "<group>"; };
-		B8FB44BD29193EAF00DB3773 /* Triple.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Triple.ahap; sourceTree = "<group>"; };
-		B8FB44BE29193EAF00DB3773 /* Gravel.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Gravel.ahap; sourceTree = "<group>"; };
-		B8FB44BF29193EAF00DB3773 /* Heartbeats.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Heartbeats.ahap; sourceTree = "<group>"; };
-		B8FB44C029193EAF00DB3773 /* Recharge.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Recharge.ahap; sourceTree = "<group>"; };
-		B8FB44CD29194BCF00DB3773 /* Boing1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Boing1.ahap; sourceTree = "<group>"; };
-		B8FB44CE29194BCF00DB3773 /* Boing2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Boing2.ahap; sourceTree = "<group>"; };
-		B8FB44D12919529D00DB3773 /* Hit1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hit1.ahap; sourceTree = "<group>"; };
-		B8FB44D22919529D00DB3773 /* Inflate2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Inflate2.ahap; sourceTree = "<group>"; };
-		B8FB44D32919529D00DB3773 /* Hit2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hit2.ahap; sourceTree = "<group>"; };
-		B8FB44D42919529D00DB3773 /* Inflate1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Inflate1.ahap; sourceTree = "<group>"; };
+		44DE92F9291978FE005143C3 /* maps.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = maps.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,6 +70,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44DE92F6291959A0005143C3 /* MapboxCoreNavigation in Frameworks */,
+				44DE92F8291959A0005143C3 /* MapboxNavigation in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -108,6 +92,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0B03FFE8291BF818007643A3 /* archive */ = {
+			isa = PBXGroup;
+			children = (
+				0BA0DAE8291B6BEE00C38F79 /* Origin.swift */,
+				44DE92F9291978FE005143C3 /* maps.swift */,
+				444CBDCF28F671C500401248 /* SwiftUIView.swift */,
+			);
+			path = archive;
+			sourceTree = "<group>";
+		};
 		44B725AA28EA1055002A5118 = {
 			isa = PBXGroup;
 			children = (
@@ -131,13 +125,15 @@
 		44B725B528EA1055002A5118 /* OnRoad */ = {
 			isa = PBXGroup;
 			children = (
-				B8FB44B429193EAF00DB3773 /* AHAP */,
+				0B03FFE8291BF818007643A3 /* archive */,
 				4431B09728F367730060B39B /* Info.plist */,
 				44B725B628EA1055002A5118 /* OnRoadApp.swift */,
 				44B725B828EA1055002A5118 /* ContentView.swift */,
 				44B7262028EA6A75002A5118 /* Settings.swift */,
 				44B7261E28EA6712002A5118 /* Home.swift */,
 				44B7261C28EA2262002A5118 /* OpenUI.swift */,
+				0B374B29291ABAF100EC42CC /* nav.swift */,
+				0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */,
 				44B725BA28EA1057002A5118 /* Assets.xcassets */,
 				44B725BC28EA1057002A5118 /* Preview Content */,
 			);
@@ -169,28 +165,6 @@
 			path = OnRoadUITests;
 			sourceTree = "<group>";
 		};
-		B8FB44B429193EAF00DB3773 /* AHAP */ = {
-			isa = PBXGroup;
-			children = (
-				B8FB44CD29194BCF00DB3773 /* Boing1.ahap */,
-				B8FB44CE29194BCF00DB3773 /* Boing2.ahap */,
-				B8FB44D12919529D00DB3773 /* Hit1.ahap */,
-				B8FB44D32919529D00DB3773 /* Hit2.ahap */,
-				B8FB44D42919529D00DB3773 /* Inflate1.ahap */,
-				B8FB44D22919529D00DB3773 /* Inflate2.ahap */,
-				B8FB44B629193EAF00DB3773 /* Drums.ahap */,
-				B8FB44B729193EAF00DB3773 /* Drums.wav */,
-				B8FB44B929193EAF00DB3773 /* Rumble.ahap */,
-				B8FB44BA29193EAF00DB3773 /* Oscillate.ahap */,
-				B8FB44BB29193EAF00DB3773 /* Sparkle.ahap */,
-				B8FB44BD29193EAF00DB3773 /* Triple.ahap */,
-				B8FB44BE29193EAF00DB3773 /* Gravel.ahap */,
-				B8FB44BF29193EAF00DB3773 /* Heartbeats.ahap */,
-				B8FB44C029193EAF00DB3773 /* Recharge.ahap */,
-			);
-			path = AHAP;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -207,6 +181,10 @@
 			dependencies = (
 			);
 			name = OnRoad;
+			packageProductDependencies = (
+				44DE92F5291959A0005143C3 /* MapboxCoreNavigation */,
+				44DE92F7291959A0005143C3 /* MapboxNavigation */,
+			);
 			productName = OnRoad;
 			productReference = 44B725B328EA1055002A5118 /* OnRoad.app */;
 			productType = "com.apple.product-type.application";
@@ -279,6 +257,9 @@
 				Base,
 			);
 			mainGroup = 44B725AA28EA1055002A5118;
+			packageReferences = (
+				44DE92F4291959A0005143C3 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */,
+			);
 			productRefGroup = 44B725B428EA1055002A5118 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -295,23 +276,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B8FB44C329193EAF00DB3773 /* Drums.wav in Resources */,
-				B8FB44CC29193EAF00DB3773 /* Recharge.ahap in Resources */,
-				B8FB44C229193EAF00DB3773 /* Drums.ahap in Resources */,
+				0BBFBFB9291ADE0800677A9C /* mapbox_docs.rtf in Resources */,
 				44B725BE28EA1057002A5118 /* Preview Assets.xcassets in Resources */,
 				44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */,
-				B8FB44C629193EAF00DB3773 /* Oscillate.ahap in Resources */,
-				B8FB44D82919529D00DB3773 /* Inflate1.ahap in Resources */,
-				B8FB44D62919529D00DB3773 /* Inflate2.ahap in Resources */,
-				B8FB44CA29193EAF00DB3773 /* Gravel.ahap in Resources */,
-				B8FB44D72919529D00DB3773 /* Hit2.ahap in Resources */,
-				B8FB44C529193EAF00DB3773 /* Rumble.ahap in Resources */,
-				B8FB44C929193EAF00DB3773 /* Triple.ahap in Resources */,
-				B8FB44CF29194BCF00DB3773 /* Boing1.ahap in Resources */,
-				B8FB44C729193EAF00DB3773 /* Sparkle.ahap in Resources */,
-				B8FB44CB29193EAF00DB3773 /* Heartbeats.ahap in Resources */,
-				B8FB44D029194BCF00DB3773 /* Boing2.ahap in Resources */,
-				B8FB44D52919529D00DB3773 /* Hit1.ahap in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -336,10 +303,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0BA0DAE9291B6BEE00C38F79 /* Origin.swift in Sources */,
 				44B725B928EA1055002A5118 /* ContentView.swift in Sources */,
+				0B374B2A291ABAF100EC42CC /* nav.swift in Sources */,
 				44B7262128EA6A75002A5118 /* Settings.swift in Sources */,
+				444CBDD028F671C500401248 /* SwiftUIView.swift in Sources */,
 				44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */,
 				44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */,
+				44DE92FA291978FE005143C3 /* maps.swift in Sources */,
 				44B7261F28EA6712002A5118 /* Home.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,23 +472,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnRoad/Preview Content\"";
-				DEVELOPMENT_TEAM = FDA437K63J;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always Shows your location on the map and helps improve the map";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Shows your location on the map and helps improve the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoad5000;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -533,23 +505,24 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"OnRoad/Preview Content\"";
-				DEVELOPMENT_TEAM = FDA437K63J;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = OnRoad/Info.plist;
-				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "This apps needs your location for naviagtion";
+				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "Always Shows your location on the map and helps improve the map";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Shows your location on the map and helps improve the map";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoad5000;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu1;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -564,6 +537,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -588,6 +562,7 @@
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -611,6 +586,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -633,6 +609,7 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = 3KLMJ84VXA;
 				GENERATE_INFOPLIST_FILE = YES;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -689,6 +666,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		44DE92F4291959A0005143C3 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/mapbox/mapbox-navigation-ios.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.8.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		44DE92F5291959A0005143C3 /* MapboxCoreNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44DE92F4291959A0005143C3 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxCoreNavigation;
+		};
+		44DE92F7291959A0005143C3 /* MapboxNavigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 44DE92F4291959A0005143C3 /* XCRemoteSwiftPackageReference "mapbox-navigation-ios" */;
+			productName = MapboxNavigation;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 44B725AB28EA1055002A5118 /* Project object */;
 }
