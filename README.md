@@ -19,7 +19,7 @@ Email lillywu@umich.edu for the secret access token!
 3. Open the main branch in Xcode. Go to preferences -> account -> + button to add your apple developer account through your appleID.
 
 4. Click on the outermost OnRoad with the blue icon to the left.
-  1. Make sure you're in project -> onRoad -> Info. Check the the iOS deployment is 15.0 at least (if you plan to run this on an iPhone, your device must          also be at least iOS 15.0.
+  > Make sure you're in project -> onRoad -> Info. Check the the iOS deployment is 15.0 at least (if you plan to run this on an iPhone, your device must          also be at least iOS 15.0.
   4b. Click on package dependencies and make sure you see MapBoxNavigation with at least version 2.8.0
   4c. Navigate to targets -> OnRoad -> General. Again check for iOS 15.0.
   4d. Click on Signing & Capabilities. The team should be selected as <Your appleID Name> (Personal Team), anywhere else this option shows up, make sure that the selection is the same (do the same for OnRoadTests & OnRoadUITests)
