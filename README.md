@@ -23,7 +23,7 @@ Email lillywu@umich.edu for the secret access token!
   -  Click on package dependencies and make sure you see MapBoxNavigation with at least version 2.8.0
   -  Navigate to targets -> OnRoad -> General. Again check for iOS 15.0.
   -  Click on Signing & Capabilities. The team should be selected as <Your appleID Name> (Personal Team), anywhere else this option shows up, make sure that the selection is the same (do the same for OnRoadTests & OnRoadUITests)
-  -  Choose a unique bundle identifier to be provisioned to your account. This may not be necessary always, but to be safe choose a uniwue identifier, e.g. OnRoad<your last name>. Doing so, a prompt will appear for you to enter your device's (laptop) password. Type it in and click always allow...the prompt may still be there so repeat the step (about 6~ times) until it disappears. (Not clear why it does this but it's trying to access keychain and may have something to do with provisioning to the Apple developer account.
+  -  Choose a unique bundle identifier to be provisioned to your account. This may not be necessary always, but to be safe choose a uniwue identifier, e.g. OnRoad<your last name>. Doing so, a prompt will appear for you to enter your device's (laptop) password. Type it in and click always allow...the prompt may still be there so repeat the step (about 6~ times) until it disappears. (Not clear why it does this but it's trying to access keychain and may have something to do with provisioning to the Apple developer account.)
   
  5. Try Building the Application to an iPhone 14 Pro device as the simulator.
 
