@@ -15,6 +15,7 @@
 		0BC2F116291C0F9D00A70D4E /* Inflate1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 0BC2F112291C0F9D00A70D4E /* Inflate1.ahap */; };
 		0BC2F117291C0F9D00A70D4E /* Hit1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 0BC2F113291C0F9D00A70D4E /* Hit1.ahap */; };
 		0BC73D24291C071B005887C1 /* AHAP in Resources */ = {isa = PBXBuildFile; fileRef = 0BC73D23291C071B005887C1 /* AHAP */; };
+		0BD69220293D3AAD0036321A /* nav_input.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BD6921F293D3AAD0036321A /* nav_input.swift */; };
 		444CBDD028F671C500401248 /* SwiftUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 444CBDCF28F671C500401248 /* SwiftUIView.swift */; };
 		44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B628EA1055002A5118 /* OnRoadApp.swift */; };
 		44B725B928EA1055002A5118 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44B725B828EA1055002A5118 /* ContentView.swift */; };
@@ -57,6 +58,7 @@
 		0BC2F112291C0F9D00A70D4E /* Inflate1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Inflate1.ahap; path = AHAP/Inflate1.ahap; sourceTree = "<group>"; };
 		0BC2F113291C0F9D00A70D4E /* Hit1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Hit1.ahap; path = AHAP/Hit1.ahap; sourceTree = "<group>"; };
 		0BC73D23291C071B005887C1 /* AHAP */ = {isa = PBXFileReference; lastKnownFileType = folder; path = AHAP; sourceTree = "<group>"; };
+		0BD6921F293D3AAD0036321A /* nav_input.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nav_input.swift; sourceTree = "<group>"; };
 		4431B09728F367730060B39B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		444CBDCF28F671C500401248 /* SwiftUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwiftUIView.swift; sourceTree = "<group>"; };
 		44B725B328EA1055002A5118 /* OnRoad.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OnRoad.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -148,6 +150,7 @@
 				44B7261E28EA6712002A5118 /* Home.swift */,
 				44B7261C28EA2262002A5118 /* OpenUI.swift */,
 				0B374B29291ABAF100EC42CC /* nav.swift */,
+				0BD6921F293D3AAD0036321A /* nav_input.swift */,
 				0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */,
 				44B725BA28EA1057002A5118 /* Assets.xcassets */,
 				44B725BC28EA1057002A5118 /* Preview Content */,
@@ -327,6 +330,7 @@
 				44B725B928EA1055002A5118 /* ContentView.swift in Sources */,
 				0B374B2A291ABAF100EC42CC /* nav.swift in Sources */,
 				44B7262128EA6A75002A5118 /* Settings.swift in Sources */,
+				0BD69220293D3AAD0036321A /* nav_input.swift in Sources */,
 				444CBDD028F671C500401248 /* SwiftUIView.swift in Sources */,
 				44B725B728EA1055002A5118 /* OnRoadApp.swift in Sources */,
 				44B7261D28EA2262002A5118 /* OpenUI.swift in Sources */,
