@@ -2,10 +2,6 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Shows your location on the map and helps improve the map</string>
-	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
-	<string>Always Shows your location on the map and helps improve the map</string>
 	<key>MBXAccessToken</key>
 	<string>pk.eyJ1IjoiYWVsd2FydCIsImEiOiJjbDl5eTZmOWUwM2U3M3VtcWs5ejF1ZjZlIn0.Nv0uRAD24fWmEjyskKhYZw</string>
 	<key>UIBackgroundModes</key>

@@ -202,9 +202,21 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
             let routeResponse = routeResponse, let routeOptions = routeOptions else {
             return
         }
-        let navigationViewController = NavigationViewController(for: routeResponse, routeIndex: 0, routeOptions: routeOptions)
+        let navigationService = MapboxNavigationService(routeResponse: routeResponse,
+                                                        routeIndex: 0,
+                                                        routeOptions: routeOptions,
+                                                        customRoutingProvider: NavigationSettings.shared.directions,
+                                                        credentials: NavigationSettings.shared.directions.credentials,
+                                                        simulating: .always)
+        navigationService.simulationSpeedMultiplier = 2.0;
+        let navigationOptions = NavigationOptions(navigationService: navigationService)
         
-        navigationViewController.modalPresentationStyle = .fullScreen
+        let navigationViewController = NavigationViewController(for: routeResponse,
+                                                                routeIndex: 0,
+                                                                routeOptions: routeOptions,
+                                                                navigationOptions: navigationOptions)
+        
+//        navigationViewController.modalPresentationStyle = .fullScreen
         
         // ERROR: for loops run before api call? returns navigation controller...need to find a way to call this after api call returns OR have a separate function that only check whether progress has been made using notifications: https://stackoverflow.com/questions/57309240/mapbox-navigation-in-ios-with-in-my-mapview-controller
         
