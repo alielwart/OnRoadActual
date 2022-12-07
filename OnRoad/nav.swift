@@ -1,5 +1,5 @@
 //
-//  RetrieveDir.swift
+//  nav.swift
 //  OnRoad
 //
 //  Created by Lilly Wu on 11/8/22.
@@ -17,17 +17,7 @@ import AVFoundation
 import GameController
 
 
-// NEED TO DO:
-/*
- 1. Replace the long press to get destination location with a text input
- 2. Time the vibrations correctly with upcoming directions
-        Need to do something to prevent for loop going to the end immediately
- 3. Annotate/Clean Up
- */
-
-//HELP IN MAPBOX_DOCS FILE
-
-//combine swiftui and storyboard
+// Combines swiftui and storyboard
 struct DirMaps: View {
     @EnvironmentObject var settings: SettingsObj
 
@@ -42,7 +32,7 @@ struct DirMaps_Previews: PreviewProvider {
     }
 }
 
-//wrapper
+// Swift UI + ViewController Wrapper
 struct DirViewWrapper : UIViewControllerRepresentable {
     @EnvironmentObject var settings: SettingsObj
 
@@ -55,7 +45,7 @@ struct DirViewWrapper : UIViewControllerRepresentable {
     }
 }
 
-// Initialize a map
+// Initialize a map, annotations, router
 
 class DirViewController: UIViewController, AnnotationInteractionDelegate {
     var navigationMapView: NavigationMapView!
@@ -109,7 +99,8 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
 
     // Calculate route to be used for navigation
     func calculateRoute(from origin: CLLocationCoordinate2D, to destination: CLLocationCoordinate2D) {
-        // Coordinate accuracy is how close the route must come to the waypoint in order to be considered viable. It is measured in meters. A negative value indicates that the route is viable regardless of how far the route is from the waypoint.
+        // Coordinate accuracy is how close the route must come to the waypoint in order to be considered viable.
+        // It is measured in meters. A negative value indicates that the route is viable regardless of how far the route is from the waypoint.
         
         let origin = Waypoint(coordinate: origin, coordinateAccuracy: -1, name: "Start")
         let destination = Waypoint(coordinate: destination, coordinateAccuracy: -1, name: "Finish")
@@ -199,7 +190,8 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
     // Present the navigation view controller when the annotation is selected
     func annotationManager(_ manager: AnnotationManager, didDetectTappedAnnotations annotations: [Annotation]) {
         guard annotations.first?.id == beginAnnotation?.id,
-            let routeResponse = routeResponse, let routeOptions = routeOptions else {
+            let routeResponse = routeResponse, let routeOptions = routeOptions
+        else {
             return
         }
         let navigationService = MapboxNavigationService(routeResponse: routeResponse,
@@ -208,46 +200,41 @@ class DirViewController: UIViewController, AnnotationInteractionDelegate {
                                                         customRoutingProvider: NavigationSettings.shared.directions,
                                                         credentials: NavigationSettings.shared.directions.credentials,
                                                         simulating: .always)
-        navigationService.simulationSpeedMultiplier = 2.0;
-        let navigationOptions = NavigationOptions(navigationService: navigationService)
         
+        navigationService.simulationSpeedMultiplier = 2.0;
+        // `MultiplexedSpeechSynthesizer` will provide "a backup" functionality to cover cases, which
+        // our custom implementation cannot handle.
+        let speechSynthesizer = MultiplexedSpeechSynthesizer([CustomVoiceController(), SystemSpeechSynthesizer()])
+        
+        // Create a `RouteVoiceController` type with a customized `SpeechSynthesizing` instance.
+        // A route voice controller monitors turn-by-turn navigation events and triggers playing spoken instructions
+        // as audio using the custom `speechSynthesizer` we created above.
+        let routeVoiceController = RouteVoiceController(navigationService: navigationService,
+                                                        speechSynthesizer: speechSynthesizer)
+        // Remember to pass our RouteVoiceController` to `Navigation Options`!
+        let navigationOptions = NavigationOptions(navigationService: navigationService,
+                                                  voiceController: routeVoiceController)
+        
+        // Create `NavigationViewController` with the custom `NavigationOptions`.
         let navigationViewController = NavigationViewController(for: routeResponse,
                                                                 routeIndex: 0,
                                                                 routeOptions: routeOptions,
                                                                 navigationOptions: navigationOptions)
+        //navigationViewController.modalPresentationStyle = .fullScreen
         
-//        navigationViewController.modalPresentationStyle = .fullScreen
-        
-        // ERROR: for loops run before api call? returns navigation controller...need to find a way to call this after api call returns OR have a separate function that only check whether progress has been made using notifications: https://stackoverflow.com/questions/57309240/mapbox-navigation-in-ios-with-in-my-mapview-controller
-        
-        // go to mapbox_docs section 2 for further directions on debugging
-
-        
-       /*  */
-        self.present(navigationViewController, animated: true, completion: nil)
-        print("moves")
-        
-        for leg in navigationViewController.route!.legs {
-             if (leg == navigationViewController.navigationService.routeProgress.currentLeg) {
-                 print("INSTRUCTION!!: ", navigationViewController.navigationService.routeProgress.upcomingStep!)
-             }
-         }
+        present(navigationViewController, animated: true, completion: nil)
     }
-    
 }
 
 class CustomVoiceController: MapboxSpeechSynthesizer {
     @EnvironmentObject var settings: SettingsObj
 
     // You will need audio files for as many or few cases as you'd like to handle
-    // This example just covers left and right. All other cases will fail the Custom Voice Controller and
-    // force a backup System Speech to kick in
-    //let turnLeft = NSDataAsset(name: "turnleft")!.data
-    //let turnRight = NSDataAsset(name: "turnright")!.data
     
     override func speak(_ instruction: SpokenInstruction, during legProgress: RouteLegProgress, locale: Locale? = nil) {
         
-        guard let soundForInstruction = audio(for: legProgress.currentStep) else {
+        guard let soundForInstruction = audio(progress: legProgress)
+        else {
             // When `MultiplexedSpeechSynthesizer` receives an error from one of it's Speech Synthesizers,
             // it requests the next on the list
             delegate?.speechSynthesizer(self,
@@ -259,54 +246,30 @@ class CustomVoiceController: MapboxSpeechSynthesizer {
         speak(instruction, data: soundForInstruction)
     }
     
-    //the issue is that we are missing the first turn + we are syncing up to the voice (will need to be able to sync without it in case driver doesn't want it)
-    //we will need to sync it up another with a navigation servce that is customized for both sound on and sound off
-    //Also need to determine when vibrations will be sent, this is based on leg, step information, maneuver direction, and how close they are to the turn
     
-    func audio(for step: RouteStep) -> Data? {
-
-        switch step.maneuverDirection {
-        case .left:
-//            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
-//            AudioServicesPlayAlertSound(SystemSoundID(1075))
-//            //let turnLeft = NSDataAsset(name: "turnleft")!.data
-//            print("left turn")
-            
-            if(GCController.controllers() != []) {
-                
-                //starts haptic engine
-                startHapticEngine();
-                
-                let intensity = 2
-                
-                let pattern = 2
-
-                //play haptic pattern
-                playHaptics(intensity: intensity, pattern: pattern)
-                
-            }
-            return nil
-        case .right:
-//            AudioServicesPlayAlertSoundWithCompletion(SystemSoundID(kSystemSoundID_Vibrate)) {   }
-//            AudioServicesPlayAlertSound(SystemSoundID(1075))
-//           // let turnRight = NSDataAsset(name: "turnright")!.data
-//            print("right turn")
-            if(GCController.controllers() != []) {
-                
-                //starts haptic engine
-                startHapticEngine();
-                
-                let intensity = 2
-                
-                let pattern = 2
-
-                //play haptic pattern
-                playHaptics(intensity: intensity, pattern: pattern)
-                
-            }
-            return nil
-        default:
-            return nil // this will force report that Custom View Controller is unable to handle this case
+    func audio(progress: RouteLegProgress) -> Data? {
+        // Vibration is synced to last spoken instruction which is right before a maneuver
+        // Only checks for left/right keywords for now
+        var total_inst_count = progress.currentStepProgress.step.instructionsSpokenAlongStep!.count
+        if (progress.currentStepProgress.remainingSpokenInstructions?.count == 1
+            && (progress.currentStepProgress.step.instructionsSpokenAlongStep![total_inst_count - 1].text.contains("left")
+                || progress.currentStepProgress.step.instructionsSpokenAlongStep![total_inst_count - 1].text.contains("right")))
+            {
+                if(GCController.controllers() != []) {
+    
+                    //starts haptic engine
+                    startHapticEngine();
+    
+                    let intensity = 2
+    
+                    let pattern = 2
+    
+                    //play haptic pattern
+                    playHaptics(intensity: intensity, pattern: pattern)
+    
+                }
+                return nil
         }
+        return nil
     }
 }
