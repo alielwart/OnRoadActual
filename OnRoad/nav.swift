@@ -260,9 +260,12 @@ class CustomVoiceController: MapboxSpeechSynthesizer {
                     //starts haptic engine
                     startHapticEngine();
     
-                    let intensity = 2
+                    let intensity = globalIntense
     
-                    let pattern = 2
+                    let pattern = globalPattern
+                    
+                    print("Global Pattern: \(globalPattern)")
+                    print("Global Intensity: \(globalIntense)")
     
                     //play haptic pattern
                     playHaptics(intensity: intensity, pattern: pattern)

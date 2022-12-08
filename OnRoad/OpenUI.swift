@@ -4,6 +4,8 @@
 //
 //  Created by Ali Elwart on 10/2/22.
 //
+public var globalPattern = 2
+public var globalIntense = 2
 
 import SwiftUI
 import GameController
@@ -82,6 +84,9 @@ struct OpenUI: View {
                     
                     // ensure to check that a controller is connected
                     if(GCController.controllers() != []) {
+                        
+                        globalPattern = settings.Pattern
+                        globalIntense = settings.vIntensity
                         
                         //starts haptic engine
                         startHapticEngine();
