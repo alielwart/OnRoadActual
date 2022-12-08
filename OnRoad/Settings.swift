@@ -87,35 +87,49 @@ struct Settings: View {
                     else {
                         Text("Vibration Pattern").foregroundColor(settings.vIsToggled ? .white : .gray)
                     }
+                    
+                    Text("Inflate - gradual vibration")
+                        .foregroundColor(.gray)
+                    
+                    Text("Hit - short, sharp vibration")
+                        .foregroundColor(.gray)
+                    
+                    Text("Heartbeats - oscillating vibration")
+                        .foregroundColor(.gray)
                    
                     // PICKER: Pattern
                     Picker("Pattern", selection: $settings.Pattern) {
                         
                         Text("Inflate").tag(1)
                         Text("Hit").tag(2)
+                        Text("Heartbeat").tag(3)
                         
                     }.pickerStyle(SegmentedPickerStyle())
                     
                     // ~~~~~~~~~~~~~ FREQUENCY ~~~~~~~~~~~~~
-                    // TEXT: Frequency
-                    if colorScheme == .light {
-                        Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .black : .gray)
-                    }
-                    else {
-                        Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .white : .gray)
-                    }
                     
-                    // SLIDER: Frequency
-                    Slider(
-                        value: $settings.vFrequency,
-                        in: 0...100,
-                        step: 1
-                    ).padding(.horizontal, 20.0)
-                        .accentColor(settings.vIsToggled ? .blue : .gray)
-                
-                    // VALUE: Frequency
-                    Text("\(settings.vFrequency, specifier: "%.0F")")
-                        .foregroundColor(settings.vIsToggled ? .blue : .gray)
+                    
+//                    // TEXT: Frequency
+//                    if colorScheme == .light {
+//                        Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .black : .gray)
+//                    }
+//                    else {
+//                        Text("Vibration Frequency").foregroundColor(settings.vIsToggled ? .white : .gray)
+//                    }
+                    
+                    
+                    
+//                    // SLIDER: Frequency
+//                    Slider(
+//                        value: $settings.vFrequency,
+//                        in: 0...100,
+//                        step: 1
+//                    ).padding(.horizontal, 20.0)
+//                        .accentColor(settings.vIsToggled ? .blue : .gray)
+//
+//                    // VALUE: Frequency
+//                    Text("\(settings.vFrequency, specifier: "%.0F")")
+//                        .foregroundColor(settings.vIsToggled ? .blue : .gray)
                     
                     
                     

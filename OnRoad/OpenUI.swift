@@ -162,8 +162,10 @@ func playHaptics(intensity: Int, pattern: Int) {
     
     if(pattern == 1){
         filename += "Inflate"
-    } else {
+    } else if(pattern == 2){
         filename += "Hit"
+    } else {
+        filename += "Heartbeats"
     }
     
     if(intensity == 1) {
