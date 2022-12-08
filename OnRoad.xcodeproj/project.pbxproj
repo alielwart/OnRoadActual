@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		0B374B2A291ABAF100EC42CC /* nav.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B374B29291ABAF100EC42CC /* nav.swift */; };
+		0B3A7A53294199F100CA6E77 /* Heartbeats1.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 0B3A7A52294199F100CA6E77 /* Heartbeats1.ahap */; };
+		0B3A7A55294199F800CA6E77 /* Heartbeats2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 0B3A7A54294199F800CA6E77 /* Heartbeats2.ahap */; };
 		0BA0DAE9291B6BEE00C38F79 /* Origin.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0BA0DAE8291B6BEE00C38F79 /* Origin.swift */; };
 		0BBFBFB9291ADE0800677A9C /* mapbox_docs.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */; };
 		0BC2F110291C0C0500A70D4E /* Hit2.ahap in Resources */ = {isa = PBXBuildFile; fileRef = 0BC2F10F291C0C0500A70D4E /* Hit2.ahap */; };
@@ -50,6 +52,8 @@
 
 /* Begin PBXFileReference section */
 		0B374B29291ABAF100EC42CC /* nav.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = nav.swift; sourceTree = "<group>"; };
+		0B3A7A52294199F100CA6E77 /* Heartbeats1.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Heartbeats1.ahap; sourceTree = "<group>"; };
+		0B3A7A54294199F800CA6E77 /* Heartbeats2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Heartbeats2.ahap; sourceTree = "<group>"; };
 		0BA0DAE8291B6BEE00C38F79 /* Origin.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Origin.swift; sourceTree = "<group>"; };
 		0BBFBFB8291ADE0800677A9C /* mapbox_docs.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = mapbox_docs.rtf; sourceTree = "<group>"; };
 		0BC2F10F291C0C0500A70D4E /* Hit2.ahap */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = Hit2.ahap; sourceTree = "<group>"; };
@@ -141,6 +145,8 @@
 				0BC2F113291C0F9D00A70D4E /* Hit1.ahap */,
 				0BC2F112291C0F9D00A70D4E /* Inflate1.ahap */,
 				0BC2F111291C0F9D00A70D4E /* Inflate2.ahap */,
+				0B3A7A52294199F100CA6E77 /* Heartbeats1.ahap */,
+				0B3A7A54294199F800CA6E77 /* Heartbeats2.ahap */,
 				0BC73D23291C071B005887C1 /* AHAP */,
 				44B725B628EA1055002A5118 /* OnRoadApp.swift */,
 				44B725B828EA1055002A5118 /* ContentView.swift */,
@@ -293,8 +299,10 @@
 			files = (
 				0BBFBFB9291ADE0800677A9C /* mapbox_docs.rtf in Resources */,
 				0BC2F116291C0F9D00A70D4E /* Inflate1.ahap in Resources */,
+				0B3A7A53294199F100CA6E77 /* Heartbeats1.ahap in Resources */,
 				0BC2F110291C0C0500A70D4E /* Hit2.ahap in Resources */,
 				44B725BE28EA1057002A5118 /* Preview Assets.xcassets in Resources */,
+				0B3A7A55294199F800CA6E77 /* Heartbeats2.ahap in Resources */,
 				0BC73D24291C071B005887C1 /* AHAP in Resources */,
 				0BC2F115291C0F9D00A70D4E /* Inflate2.ahap in Resources */,
 				44B725BB28EA1057002A5118 /* Assets.xcassets in Resources */,
@@ -509,7 +517,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu1;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -542,7 +550,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu1;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadWu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -566,7 +574,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadTests;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadTestsWu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -591,7 +599,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadTests;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadTestsWu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -614,7 +622,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadUITestsWu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -637,7 +645,7 @@
 					"@loader_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadUITests;
+				PRODUCT_BUNDLE_IDENTIFIER = onroad.OnRoadUITestsWu2;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
